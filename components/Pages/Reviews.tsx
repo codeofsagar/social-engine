@@ -108,10 +108,11 @@ function Reviews() {
   return (
     <section 
       ref={containerRef}
+      id="reviews"
       className="bg-[#FFFBF6] text-black min-h-screen flex flex-col justify-center relative overflow-hidden py-24"
     >
       {/* Background Typography Watermark */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full text-center select-none pointer-events-none opacity-[0.03]">
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full text-center select-none pointer-events-none opacity-[0.07]">
         <h1 
           className="text-[20vw] font-black uppercase tracking-tighter leading-none text-black"
           style={{ fontFamily: "Druk Wide Cy Web Bold Regular" }}
@@ -128,8 +129,8 @@ function Reviews() {
                 <span className="w-3 h-3 bg-[#B9935B] rounded-full animate-pulse"></span>
                 <span className="text-xs font-mono uppercase tracking-widest opacity-60">Live Client Feedback</span>
             </div>
-            <div className="hidden md:block text-xs font-mono uppercase tracking-widest opacity-60">
-                Data Updated: 2024
+            <div className="hidden md:block text-xs font-mono uppercase tracking-widest opacity-90">
+                Data Updated: 2025
             </div>
         </div>
 

@@ -189,18 +189,7 @@ function HeroSection() {
       ========================================= */}
       <div className="container mx-auto px-4 md:px-6 relative z-20 flex flex-col items-center text-center">
         
-        {/* Animated Badge */}
-        <div className="hero-badge mb-6 md:mb-8 inline-flex items-center gap-3 px-6 py-2 rounded-full border border-[#B9935B]/20 bg-black/40 backdrop-blur-md">
-           <span className="relative flex h-2 w-2">
-             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#B9935B] opacity-75"></span>
-             <span className="relative inline-flex rounded-full h-2 w-2 bg-[#B9935B]"></span>
-           </span>
-           <span 
-             className="text-[10px] md:text-xs font-bold text-[#B9935B] uppercase tracking-[0.25em]"
-           >
-             System Online • Q1 2025
-           </span>
-        </div>
+        
 
         {/* Cinematic Headline - SIZING REDUCED HERE */}
         <div className="max-w-5xl mx-auto w-full">

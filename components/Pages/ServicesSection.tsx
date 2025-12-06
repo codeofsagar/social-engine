@@ -85,6 +85,7 @@ function ServicesSection() {
   return (
     <section
       ref={containerRef}
+      id="services"
       className="bg-[#FFFBF6] text-black min-h-screen relative overflow-hidden font-sans selection:bg-black selection:text-[#B9935B]"
     >
       {/* Inject CSS Keyframes locally for this component */}

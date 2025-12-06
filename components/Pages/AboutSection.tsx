@@ -84,6 +84,7 @@ function AboutSection() {
   return (
     <section
       ref={container}
+      id="about"
       className="relative text-black min-h-screen overflow-x-hidden selection:bg-[#B9935B] selection:text-black"
     >
 
@@ -196,7 +197,7 @@ function AboutSection() {
                  </div>
                  
                  <h3 
-                    className="text-5xl md:text-8xl font-black mb-8 text-white leading-none uppercase tracking-tighter"
+                    className="text-4xl md:text-8xl font-black mb-8 text-white leading-none uppercase tracking-tighter"
                     style={{ fontFamily: "Druk Wide Cy Web Bold Regular" }}
                  >
                     System<br/>
@@ -209,8 +210,8 @@ function AboutSection() {
                    We don&apos;t just run ads. We deploy a combat-tested, three-phase infrastructure designed to dominate your market vertical.
                  </p>
 
-                 <div className="flex items-center gap-4">
-                     <div className="w-16 h-16 rounded-full border border-white/20 flex items-center justify-center text-[#B9935B] bg-white/5 backdrop-blur-sm animate-pulse">
+                 <div className="flex items-center gap-4 hidden md:block ">
+                     <div className="w-16 h-16 rounded-full border border-white/20 flex items-center justify-center text-[#B9935B] bg-white/5 backdrop-blur-sm  animate-pulse">
                         <ArrowRight size={24} />
                      </div>
                      <div className="text-xs font-mono text-gray-500 uppercase tracking-widest font-bold">
