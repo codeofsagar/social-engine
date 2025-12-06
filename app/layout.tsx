@@ -1,4 +1,4 @@
-import AdStrategyForm from "@/components/Pages/AdStrategyForm";
+
 import "./globals.css";
 import { Header, } from "@/components";
 import { Footer } from '@/components'
@@ -27,7 +27,7 @@ export default function RootLayout({
           <Header />
           {children}
           <Footer />
-          <AdStrategyForm/>
+         
          
           <Script
             id="fb-pixel"
