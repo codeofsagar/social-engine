@@ -1,0 +1,87 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* CSS RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  font-family: "Helvetica Neue", Helvetica, sans-serif;
+  overflow-x: hidden;
+}
+
+section {
+  position: relative;
+  z-index: 10;
+}
+.h1 {
+  font-size: clamp(48px, 6dvw, 144px);
+}
+.super-size {
+  font-size: clamp(92px, 18vw, 348px);
+}
+.menu-closed {
+  clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+}
+.menu-open {
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+}
+.mask {
+  overflow: hidden;
+}
+.event-card:hover .event-img {
+  display: block;
+}
+
+.album-cover:hover {
+  transform: translateX(-15%);
+}
+.album-cover:hover + .album-cover-round {
+  transform: translateX(15%);
+}
+.spin {
+  animation: spin 20s infinite linear;
+}
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* MARQUEE EFFECT */
+.slider-container {
+  position: absolute;
+}
+
+.slider {
+  position: relative;
+  white-space: nowrap;
+  display: flex;
+}
+
+.slider h2 {
+  /* margin-right: 1.5rem; */
+  display: flex;
+  align-items: center;
+  /* gap: 2rem; */
+}
+
+.slider h2:nth-of-type(2) {
+  position: absolute;
+  left: 100%;
+}
+
+@media screen and (max-width: 768px) {
+  .slider h2 {
+    gap: 1rem;
+    margin-right: 1rem;
+  }
+}
