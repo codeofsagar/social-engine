@@ -70,7 +70,7 @@ function HomeContactSection() {
           </div>
           
           <h2 
-            className="text-[12vw] lg:text-[10vw] leading-[0.8] font-black uppercase tracking-tighter"
+            className="text-[10vw] lg:text-[8vw] leading-[1] font-black uppercase "
             style={{ fontFamily: "Druk Wide Cy Web Bold Regular" }}
           >
             Next Level <br />

@@ -48,7 +48,7 @@ function Footer() {
                 Scales from 2.5rem (mobile) up to 7rem (desktop).
             */}
             <h2 
-              className="text-[clamp(2.5rem,9vw,7rem)] font-bold uppercase tracking-tight leading-[0.9]"
+              className="text-[clamp(2rem,7vw,5rem)] font-bold uppercase  leading-[0.9]"
               style={{ fontFamily: "Druk Wide Cy Web Bold Regular" }}
             >
               Have an <br />
@@ -160,7 +160,7 @@ function Footer() {
                 This prevents it from overflowing or looking too aggressive on smaller screens.
             */}
             <h1 
-              className="text-[10vw] font-black uppercase tracking-tighter text-[#050505] mix-blend-multiply leading-none"
+              className="text-[10vw] font-black uppercase  text-[#050505] mix-blend-multiply leading-none"
               style={{ fontFamily: "Druk Wide Cy Web Bold Regular" }}
             >
                 AP Agency

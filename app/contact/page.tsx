@@ -86,7 +86,7 @@ function ContactSection() {
                 </div>
                 
                 {/* Responsive Headline: breaks words if needed, scales with viewport */}
-                <h2 className="w-full text-[13vw] lg:text-[9vw] leading-[0.85] font-black uppercase tracking-tighter mb-8 mix-blend-darken break-words hyphens-auto">
+                <h2 className="w-full text-[10vw] lg:text-[7vw] leading-[1] font-black uppercase  mb-8 mix-blend-darken break-words hyphens-auto">
                     <div className="overflow-hidden"><div className="reveal-text">Ready to</div></div>
                     <div className="overflow-hidden"><div className="reveal-text text-[#B9935B]">Dominate?</div></div>
                 </h2>

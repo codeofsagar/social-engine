@@ -197,7 +197,7 @@ function Reviews() {
                         >
                             {/* Adjusted Size for Wide Font */}
                             <h3 
-                              className="text-2xl md:text-3xl lg:text-4xl font-medium leading-[1.2] mb-8 text-black uppercase tracking-tight"
+                              className="text-2xl md:text-3xl lg:text-4xl font-medium  mb-8 text-black uppercase "
                               style={{ fontFamily: "Druk Wide Cy Web Bold Regular" }}
                             >
                                 &ldquo;{TESTIMONIALS[active].quote}&rdquo;

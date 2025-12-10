@@ -106,7 +106,7 @@ function PackageSection() {
             </div>
             
             <h2 
-                className="text-[11vw] lg:text-[10vw] leading-[1] font-black uppercase tracking-tighter mb-12 mix-blend-darken"
+                className="text-[7vw] lg:text-[7vw]  font-black uppercase  mb-12 mix-blend-darken"
                 style={{ fontFamily: "Druk Wide Cy Web Bold Regular" }}
             >
                 The <span className="text-transparent [-webkit-text-stroke:1px_black] hover:text-[#B9935B] transition-colors duration-500">Growth</span><br/>
@@ -142,7 +142,7 @@ function PackageSection() {
                             <div className="flex-1">
                                 <div className="flex flex-col md:flex-row md:justify-between md:items-center mb-4">
                                     <h3 
-                                        className="text-2xl md:text-3xl lg:text-4xl font-bold uppercase tracking-tight transition-colors duration-300 group-hover:text-[#B9935B] leading-none"
+                                        className="text-2xl md:text-3xl lg:text-4xl font-bold uppercase  transition-colors leading-relaxed duration-300 group-hover:text-[#B9935B] "
                                         style={{ fontFamily: "Druk Wide Cy Web Bold Regular" }}
                                     >
                                         {item.title}
@@ -176,7 +176,7 @@ function PackageSection() {
                             {/* Header */}
                             <div className="flex justify-between items-start mb-16 relative z-30">
                                 <div>
-                                    <p className="font-mono text-xs text-[#B9935B] uppercase tracking-widest mb-3">Monthly Retainer</p>
+                                    <p className="font-mono text-xs text-[#B9935B] uppercase  mb-3">Monthly Retainer</p>
                                     <h4 
                                         className="text-lg md:text-xl font-bold uppercase text-white"
                                         style={{ fontFamily: "Druk Wide Cy Web Bold Regular" }}
@@ -191,7 +191,7 @@ function PackageSection() {
                             <div className="mb-12 relative z-30">
                                 <div className="flex items-baseline gap-2 flex-wrap">
                                     <span 
-                                        className="text-5xl md:text-6xl lg:text-7xl font-black tracking-tighter text-white"
+                                        className="text-5xl md:text-6xl lg:text-7xl font-black  text-white"
                                         style={{ fontFamily: "Druk Wide Cy Web Bold Regular" }}
                                     >
                                         $1,500
@@ -229,7 +229,7 @@ function PackageSection() {
                              <div className="seal-text w-full h-full absolute inset-0">
                                 <svg viewBox="0 0 100 100" className="w-full h-full">
                                     <path id="curve" d="M 50 50 m -37 0 a 37 37 0 1 1 74 0 a 37 37 0 1 1 -74 0" fill="transparent"/>
-                                    <text className="text-[14px] font-mono font-bold uppercase fill-[#B9935B] tracking-[0.15em]">
+                                    <text className="text-[14px] font-mono font-bold uppercase fill-[#B9935B] ">
                                         <textPath href="#curve">
                                             • Guarantee • Verified •
                                         </textPath>

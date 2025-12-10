@@ -104,20 +104,20 @@ function AboutSection() {
 
         <div className="relative z-20 flex justify-between items-center mb-16 text-xs font-bold font-mono text-gray-500 uppercase tracking-widest">
            <span className="text-[#B9935B] border border-[#B9935B]/30 px-3 py-1 bg-[#B9935B]/10 rounded-full">System Status: Online</span>
-           <span className="text-black/50">[ EST. 2025 ]</span>
+          
         </div>
 
         <div className="relative z-20 grid grid-cols-1 lg:grid-cols-12 gap-12 items-end">
           <div className="lg:col-span-8" id="about-hero-text">
             <h2 
-                className="text-[12vw] lg:text-[7vw] font-black tracking-tighter leading-[1] mb-8 text-black"
+                className="text-[10vw] lg:text-[6vw] font-black  leading-[1.3] mb-8 text-black"
                 style={{ fontFamily: "Druk Wide Cy Web Bold Regular" }}
             >
               <div className="overflow-hidden"><span className="about-line block">REVENUE</span></div>
               <div className="overflow-hidden"><span className="about-line block text-transparent text-[7vw] md:text-[5vw] [-webkit-text-stroke:1px_#000]">ENGINEERING</span></div>
               <div className="overflow-hidden"><span className="about-line block text-[#B9935B]">NOT LUCK.</span></div>
             </h2>
-            <p className="text-lg md:text-2xl text-gray-600 max-w-2xl mt-8 font-light leading-relaxed">
+            <p className="text-lg md:text-2xl text-gray-600 max-w-2xl mt-8 font-light ">
               We replace &quot;hope marketing&quot; with <span className="text-black font-bold bg-[#B9935B]/20 px-1">mathematical certainty</span>. 
               Our infrastructure scales brands from 6 to 8 figures using data-driven aggressive acquisition.
             </p>
@@ -135,14 +135,14 @@ function AboutSection() {
 
                  <div className="flex items-baseline gap-2 mb-6">
                      <span 
-                        className="text-8xl font-black text-[#B9935B] tracking-tighter leading-none"
+                        className="text-8xl font-black text-[#B9935B]  "
                         style={{ fontFamily: "Druk Wide Cy Web Bold Regular" }}
                      >
                         45X
                      </span>
                  </div>
 
-                 <p className="text-gray-400 text-sm leading-relaxed mb-8 border-l border-[#B9935B] pl-4">
+                 <p className="text-gray-400 text-sm  mb-8 border-l border-[#B9935B] pl-4">
                     Documented return on ad spend (ROAS) across our top 3 verticals in Q1.
                  </p>
              </div>
@@ -180,7 +180,7 @@ function AboutSection() {
              
              {/* Giant Watermark */}
              <div 
-                className="absolute -left-10 bottom-0 text-[35vh] text-white/[0.03] font-black pointer-events-none select-none leading-none"
+                className="absolute -left-10 bottom-0 text-[35vh] text-white/[0.03] font-black pointer-events-none select-none "
                 style={{ fontFamily: "Druk Wide Cy Web Bold Regular" }}
              >
                 PRO
@@ -197,7 +197,7 @@ function AboutSection() {
                  </div>
                  
                  <h3 
-                    className="text-4xl md:text-8xl font-black mb-8 text-white leading-none uppercase tracking-tighter"
+                    className="text-4xl md:text-6xl font-black mb-8 text-white  uppercase "
                     style={{ fontFamily: "Druk Wide Cy Web Bold Regular" }}
                  >
                     System<br/>
@@ -206,7 +206,7 @@ function AboutSection() {
                  
                  <div className="w-24 h-1 bg-[#B9935B] mb-8"></div>
 
-                 <p className="text-gray-400 text-lg md:text-xl max-w-md leading-relaxed mb-12 font-medium">
+                 <p className="text-gray-400 text-lg md:text-xl max-w-md  mb-12 font-medium">
                    We don&apos;t just run ads. We deploy a combat-tested, three-phase infrastructure designed to dominate your market vertical.
                  </p>
 
@@ -236,7 +236,7 @@ function AboutSection() {
                   {/* Vertical Text Label */}
                   <div className="absolute left-0 top-0 bottom-0 w-8 md:w-12 border-r border-white/10 flex items-center justify-center bg-[#050505]">
                       <span 
-                        className="text-gray-600 group-hover:text-[#B9935B] font-mono text-[10px] md:text-xs font-bold tracking-[0.3em] uppercase rotate-180 transition-colors"
+                        className="text-gray-600 group-hover:text-[#B9935B] font-mono text-[10px] md:text-xs font-bold  uppercase rotate-180 transition-colors"
                         style={{ writingMode: 'vertical-rl' }}
                       >
                           {step.label} 
@@ -264,12 +264,12 @@ function AboutSection() {
                                 {step.id}
                             </div>
                             <h4 
-                               className="text-2xl md:text-5xl font-black mb-4 md:mb-6 text-white uppercase leading-none"
+                               className="text-2xl md:text-5xl font-black mb-4 md:mb-6 text-white uppercase "
                                style={{ fontFamily: "Druk Wide Cy Web Bold Regular" }}
                             >
                                 {step.title}
                             </h4>
-                            <p className="text-gray-400 text-sm md:text-base leading-relaxed border-l-2 border-white/10 group-hover:border-[#B9935B] pl-4 transition-colors">
+                            <p className="text-gray-400 text-sm md:text-base  border-l-2 border-white/10 group-hover:border-[#B9935B] pl-4 transition-colors">
                               {step.desc}
                             </p>
                           </div>
@@ -307,7 +307,7 @@ function AboutSection() {
                 </div>
 
                 <h2 
-                    className="text-[10vw] md:text-[8vw] font-black mb-12 text-white tracking-tighter leading-[1] uppercase"
+                    className="text-[8vw] md:text-[7vw] font-black mb-12 text-white   uppercase"
                     style={{ fontFamily: "Druk Wide Cy Web Bold Regular" }}
                 >
                   Ready to <br/>

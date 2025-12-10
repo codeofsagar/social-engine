@@ -124,13 +124,13 @@ function ServicesSection() {
           </div>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-end">
             <div>
-              <h2 className="text-[13vw] lg:text-[10vw] leading-[0.8] font-black tracking-tighter uppercase text-black">
+              <h2 className="text-[11vw] lg:text-[9vw] leading-[1] font-black  uppercase text-black">
                 <div className="overflow-hidden"><div className="reveal-text">Scale</div></div>
                 <div className="overflow-hidden"><div className="reveal-text text-[#B9935B]">Now</div></div>
               </h2>
             </div>
             <div className="pb-4">
-              <p className="text-xl lg:text-2xl font-medium leading-relaxed reveal-text max-w-md ml-auto text-black">
+              <p className="text-xl lg:text-2xl font-medium  reveal-text max-w-md ml-auto text-black">
                 We build campaigns that convert. <br/>
                 <span className="text-gray-500">High-impact creative meets data-driven strategy.</span>
               </p>
@@ -185,7 +185,7 @@ function ServicesSection() {
       </div>
 
       {/* --- PURE CSS MARQUEE (NO JS) --- */}
-      <div className="py-24 overflow-hidden bg-black text-[#FFFBF6]">
+      <div className="py-8 overflow-hidden bg-black text-[#FFFBF6]">
         {/* The class 'animate-marquee-smooth' uses the CSS keyframe defined above */}
         <div className="flex w-max animate-marquee-smooth">
             
@@ -193,7 +193,7 @@ function ServicesSection() {
             <div className="flex items-center gap-12 pr-12">
                 {MARQUEE_ITEMS.map((item, i) => (
                     <div key={`a-${i}`} className="flex items-center gap-12">
-                        <h2 className="text-6xl lg:text-9xl font-black uppercase tracking-tighter shrink-0">
+                        <h2 className="text-4xl lg:text-7xl font-black uppercase  shrink-0">
                             {item}
                         </h2>
                         <span className="w-4 h-4 lg:w-8 lg:h-8 rounded-full bg-[#B9935B] shrink-0 block"></span>

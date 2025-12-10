@@ -194,19 +194,19 @@ function HeroSection() {
         {/* Cinematic Headline - SIZING REDUCED HERE */}
         <div className="max-w-5xl mx-auto w-full">
             <h1 
-              className="flex flex-col items-center justify-center font-black leading-[0.9] tracking-tighter mb-8 md:mb-10"
+              className="flex flex-col items-center justify-center font-black  tracking-tighter mb-8 md:mb-10"
               style={{ fontFamily: "Druk Wide Cy Web Bold Regular" }}
             >
               {/* LINE 1: WHITE */}
               <div className="overflow-hidden">
-                <span className="hero-line block text-white text-[9vw] md:text-[5vw] drop-shadow-2xl">
+                <span className="hero-line block text-white text-[7vw] md:text-[4vw] drop-shadow-2xl">
                   STOP WASTING
                 </span>
               </div>
               
               {/* LINE 2: GOLD & GLOWING */}
               <div className="overflow-hidden">
-                  <span className="hero-line block text-[#B9935B] text-[9vw] md:text-[5vw] drop-shadow-[0_0_35px_rgba(185,147,91,0.4)]">
+                  <span className="hero-line block text-[#B9935B] text-[7vw] md:text-[4vw] drop-shadow-[0_0_35px_rgba(185,147,91,0.4)]">
                     MONEY ON
                   </span>
               </div>
@@ -214,7 +214,7 @@ function HeroSection() {
               {/* LINE 3: HOLLOW / STROKED */}
               <div className="overflow-hidden">
                   <span 
-                    className="hero-line block text-transparent text-[9vw] md:text-[5vw] [-webkit-text-stroke:1px_rgba(255,255,255,0.8)] md:[-webkit-text-stroke:1px_rgba(255,255,255,0.8)] opacity-60"
+                    className="hero-line block text-transparent text-[7vw] md:text-[4vw] [-webkit-text-stroke:1px_rgba(255,255,255,0.8)] md:[-webkit-text-stroke:1px_rgba(255,255,255,0.8)] opacity-60"
                   >
                     BAD MARKETING
                   </span>
