@@ -43,6 +43,12 @@ const STATS = [
   { value: "98%", label: "Retention" },
 ];
 
+const COLORS = {
+  gold: "#B9935B",
+  bg: "#FFFBF6",
+  black: "#000000"
+};
+
 function Reviews() {
   const containerRef = useRef<HTMLDivElement>(null);
   const [active, setActive] = useState(0);
@@ -53,8 +59,8 @@ function Reviews() {
   useEffect(() => {
     if (!autoplay) return;
     
-    const duration = 5000; // 5 seconds per slide
-    const intervalTime = 50; // Update every 50ms
+    const duration = 5000; 
+    const intervalTime = 50; 
     const step = 100 / (duration / intervalTime);
 
     const timer = setInterval(() => {
@@ -109,56 +115,71 @@ function Reviews() {
     <section 
       ref={containerRef}
       id="reviews"
-      className="bg-[#FFFBF6] text-black min-h-screen flex flex-col justify-center relative overflow-hidden py-24"
+      // UPDATED: Reduced vertical padding on mobile (py-12 vs py-24)
+      className="bg-[#FFFBF6] text-black min-h-screen flex flex-col justify-center relative overflow-hidden py-12 lg:py-24"
+      style={{ fontFamily: '"Inter", sans-serif' }}
     >
       {/* --- Background Elements --- */}
       
-      {/* 1. Noise Texture (Lowest Layer) */}
-      <div className="absolute inset-0 pointer-events-none opacity-[0.04] z-[0] mix-blend-multiply" 
+      {/* 1. Noise Texture */}
+      <div className="absolute inset-0 pointer-events-none opacity-[0.10] z-[0] mix-blend-multiply" 
            style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")` }}>
       </div>
 
-      {/* 2. Background Image (Corporate/Abstract Architecture) */}
+      {/* 2. Background Image */}
       <div 
-        className="absolute inset-0 z-[1] opacity-[0.06] mix-blend-luminosity pointer-events-none"
+        className="absolute inset-0 z-[1] opacity-[0.07] mix-blend-luminosity pointer-events-none"
         style={{
             backgroundImage: `url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop')`,
             backgroundSize: 'cover',
             backgroundPosition: 'center',
-            filter: 'grayscale(100%)' 
+            filter: 'grayscale(10%)' 
         }}
       ></div>
 
-      {/* 3. Typography Watermark */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full text-center select-none pointer-events-none opacity-[0.05] z-[2]">
+      {/* 3. Typography Watermark (Zalando Sans) */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full text-center select-none pointer-events-none opacity-[0.03] z-[2]">
         <h1 
-          className="text-[20vw] font-black uppercase tracking-tighter leading-none text-black"
-          style={{ fontFamily: "Druk Wide Cy Web Bold Regular" }}
+          className="text-[20vw] leading-none text-black"
+          style={{ 
+            fontFamily: '"Zalando Sans", sans-serif', 
+            fontWeight: 900 
+          }}
         >
-          Trust
+          TRUST
         </h1>
       </div>
 
       <div className="max-w-7xl mx-auto px-6 lg:px-12 w-full relative z-10">
         
-        {/* Header Specs */}
-        <div className="flex items-center justify-between mb-16 border-b border-black/10 pb-6">
+        {/* Header Specs (IBM Plex Mono) */}
+        {/* UPDATED: Reduced bottom margin on mobile (mb-8 vs mb-16) */}
+        <div className="flex items-center justify-between mb-8 lg:mb-16 border-b border-black/10 pb-6">
             <div className="flex items-center gap-4">
-                <span className="w-3 h-3 bg-[#B9935B] rounded-full animate-pulse"></span>
-                <span className="text-xs font-mono uppercase tracking-widest opacity-60">Live Client Feedback</span>
+                <span className="w-2 h-2 rounded-full animate-pulse" style={{ backgroundColor: COLORS.gold }}></span>
+                <span 
+                  className="text-sm uppercase tracking-widest opacity-80"
+                  style={{ fontFamily: '"IBM Plex Mono", monospace', color: COLORS.gold }}
+                >
+                  Live Client Feedback
+                </span>
             </div>
-            <div className="hidden md:block text-xs font-mono uppercase tracking-widest opacity-90">
+            <div 
+              className="hidden md:block text-sm uppercase tracking-widest opacity-60"
+              style={{ fontFamily: '"IBM Plex Mono", monospace' }}
+            >
                 Data Updated: 2025
             </div>
         </div>
 
         {/* Content Layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24 items-center min-h-[500px]">
+        {/* UPDATED: Removed min-height on mobile (min-h-[500px]) to allow tight stacking */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-24 items-center lg:min-h-[500px]">
             
             {/* Left: Image & Controls */}
             <div className="lg:col-span-5 relative">
-                {/* Image Container with Border */}
-                <div className="relative aspect-[4/5] overflow-hidden rounded-sm bg-gray-200 border border-black shadow-[8px_8px_0px_rgba(0,0,0,0.1)]">
+                {/* Image Container */}
+                <div className="relative aspect-[4/5] overflow-hidden rounded-sm bg-gray-200 border border-black shadow-[8px_8px_0px_rgba(185,147,91,0.15)]">
                     <AnimatePresence mode="wait">
                         <motion.img
                             key={TESTIMONIALS[active].id}
@@ -176,11 +197,11 @@ function Reviews() {
                     <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
                 </div>
 
-                {/* Progress Bar (Attached to image) */}
+                {/* Progress Bar */}
                 <div className="absolute bottom-0 left-0 w-full h-1 bg-black/20 z-20">
                     <motion.div 
-                        className="h-full bg-[#B9935B]"
-                        style={{ width: `${progress}%` }}
+                        className="h-full"
+                        style={{ width: `${progress}%`, backgroundColor: COLORS.gold }}
                     />
                 </div>
 
@@ -188,24 +209,28 @@ function Reviews() {
                 <div className="absolute -bottom-8 right-0 translate-y-full flex gap-4">
                     <button 
                         onClick={handlePrev}
-                        className="w-14 h-14 border border-black flex items-center justify-center bg-[#FFFBF6] hover:bg-black hover:text-[#B9935B] transition-colors duration-300"
+                        className="w-14 h-14 border border-black flex items-center justify-center bg-[#FFFBF6] hover:bg-black transition-colors duration-300 group"
                     >
-                        <IconArrowLeft size={20} />
+                        <IconArrowLeft size={20} className="group-hover:text-[#B9935B]" />
                     </button>
                     <button 
                         onClick={handleNext}
-                        className="w-14 h-14 border border-black flex items-center justify-center bg-[#FFFBF6] hover:bg-black hover:text-[#B9935B] transition-colors duration-300"
+                        className="w-14 h-14 border border-black flex items-center justify-center bg-[#FFFBF6] hover:bg-black transition-colors duration-300 group"
                     >
-                        <IconArrowRight size={20} />
+                        <IconArrowRight size={20} className="group-hover:text-[#B9935B]" />
                     </button>
                 </div>
             </div>
 
             {/* Right: Text Content */}
-            <div className="lg:col-span-7 flex flex-col justify-center">
-                <IconQuote className="text-[#B9935B] w-12 h-12 md:w-16 md:h-16 mb-8 opacity-80" />
+            <div className="lg:col-span-7 flex flex-col justify-center mt-12 lg:mt-0">
+                <IconQuote 
+                  className="w-12 h-12 md:w-16 md:h-16 mb-4 lg:mb-8 opacity-100" 
+                  style={{ color: COLORS.gold }}
+                />
                 
-                <div className="h-[320px] lg:h-[350px] flex items-center">
+                {/* UPDATED: Changed height logic. Mobile is auto (grows with text), Desktop is fixed to prevent jitter. */}
+                <div className="min-h-[250px] lg:h-[350px] flex items-start lg:items-center">
                     <AnimatePresence mode="wait">
                         <motion.div
                             key={TESTIMONIALS[active].id}
@@ -214,23 +239,35 @@ function Reviews() {
                             exit={{ y: -20, opacity: 0 }}
                             transition={{ duration: 0.5 }}
                         >
-                            {/* Adjusted Size for Wide Font */}
+                            {/* Quote Body (Inter) */}
                             <h3 
-                              className="text-2xl md:text-3xl lg:text-4xl font-medium  mb-8 text-black uppercase "
-                              style={{ fontFamily: "Druk Wide Cy Web Bold Regular" }}
+                              className="text-2xl md:text-3xl lg:text-4xl font-medium leading-tight mb-6 lg:mb-8 text-black"
+                              style={{ fontFamily: '"Inter", sans-serif' }}
                             >
                                 &ldquo;{TESTIMONIALS[active].quote}&rdquo;
                             </h3>
                             
-                            <div className="flex flex-col border-l-2 border-[#B9935B] pl-6">
+                            <div className="flex flex-col border-l-2 pl-6" style={{ borderColor: COLORS.gold }}>
+                                {/* Name (Zalando Sans - Black 900) */}
                                 <span 
-                                  className="text-lg md:text-xl font-bold uppercase tracking-wide"
-                                  style={{ fontFamily: "Druk Wide Cy Web Bold Regular" }}
+                                  className="text-2xl md:text-3xl uppercase tracking-wide leading-none mb-2"
+                                  style={{ 
+                                    fontFamily: '"Zalando Sans", sans-serif', 
+                                    fontWeight: 900,
+                                    color: COLORS.black
+                                  }}
                                 >
                                     {TESTIMONIALS[active].name}
                                 </span>
-                                <span className="text-gray-500 font-serif italic mt-1">
-                                    {TESTIMONIALS[active].role}, {TESTIMONIALS[active].company}
+                                {/* Role (IBM Plex Mono) */}
+                                <span 
+                                  className="text-sm opacity-90"
+                                  style={{ 
+                                    fontFamily: '"IBM Plex Mono", monospace',
+                                    color: COLORS.gold
+                                  }}
+                                >
+                                    {TESTIMONIALS[active].role} / {TESTIMONIALS[active].company}
                                 </span>
                             </div>
                         </motion.div>
@@ -240,17 +277,29 @@ function Reviews() {
         </div>
 
         {/* Stats Footer */}
-        <div className="mt-32 border-t border-black">
+        {/* UPDATED: Reduced top margin on mobile (mt-12 vs mt-32) */}
+        <div className="mt-12 lg:mt-32 border-t border-black">
             <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-black/10">
                 {STATS.map((stat, i) => (
-                    <div key={i} className="stat-entry pt-8 pl-4 lg:pl-8">
+                    <div key={i} className="stat-entry pt-6 lg:pt-8 pl-4 lg:pl-8">
+                        {/* Stat Value (Zalando Sans - Black 900) - Gold */}
                         <div 
-                          className="text-3xl lg:text-5xl font-bold mb-2 text-black"
-                          style={{ fontFamily: "Druk Wide Cy Web Bold Regular" }}
+                          className="text-3xl lg:text-5xl mb-2"
+                          style={{ 
+                            fontFamily: '"Zalando Sans", sans-serif', 
+                            fontWeight: 900,
+                            color: COLORS.gold
+                          }}
                         >
                           {stat.value}
                         </div>
-                        <div className="text-xs font-mono uppercase tracking-widest text-gray-500">{stat.label}</div>
+                        {/* Stat Label (IBM Plex Mono) */}
+                        <div 
+                          className="text-xs uppercase tracking-widest text-black/60"
+                          style={{ fontFamily: '"IBM Plex Mono", monospace' }}
+                        >
+                          {stat.label}
+                        </div>
                     </div>
                 ))}
             </div>

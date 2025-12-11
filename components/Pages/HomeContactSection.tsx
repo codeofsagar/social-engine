@@ -7,6 +7,12 @@ import { IconArrowUpRight, IconBarcode } from "@tabler/icons-react";
 
 gsap.registerPlugin(ScrollTrigger);
 
+const COLORS = {
+  gold: "#B9935B",
+  bg: "#FFFBF6",
+  black: "#000000"
+};
+
 function HomeContactSection() {
   const containerRef = useRef<HTMLDivElement>(null);
   const textRef = useRef<HTMLDivElement>(null);
@@ -50,15 +56,16 @@ function HomeContactSection() {
     <section
       ref={containerRef}
       className="bg-[#FFFBF6] text-black py-24 lg:py-32 px-4 relative overflow-hidden border-t border-black/10"
+      style={{ fontFamily: '"Inter", sans-serif' }}
     >
       {/* --- Background Elements --- */}
       
-      {/* 1. Noise Texture (Lowest Layer) */}
+      {/* 1. Noise Texture */}
       <div className="absolute inset-0 pointer-events-none opacity-[0.04] z-[0] mix-blend-multiply" 
            style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")` }}>
       </div>
 
-      {/* 2. Background Image (Topographic Map) */}
+      {/* 2. Background Image */}
       <div 
         className="absolute inset-0 z-[1] opacity-[0.08] mix-blend-multiply pointer-events-none"
         style={{
@@ -78,28 +85,38 @@ function HomeContactSection() {
         {/* --- Headline Section --- */}
         <div ref={textRef} className="text-center mb-16 lg:mb-24">
           <div className="inline-flex items-center gap-2 border border-[#B9935B] rounded-full px-4 py-1 mb-6 bg-[#FFFBF6]/80 backdrop-blur-sm">
-            <span className="w-2 h-2 rounded-full bg-[#B9935B] animate-pulse"></span>
+            <span className="w-2 h-2 rounded-full animate-pulse" style={{ backgroundColor: COLORS.gold }}></span>
             <span 
-              className="text-xs uppercase tracking-widest text-[#B9935B]"
-              style={{ fontFamily: "Druk Wide Cy Web Bold Regular, sans-serif" }}
+              className="text-xs uppercase tracking-widest"
+              style={{ 
+                fontFamily: '"IBM Plex Mono", monospace', 
+                color: COLORS.gold 
+              }}
             >
               Limited Availability
             </span>
           </div>
           
           <h2 
-            className="text-[10vw] lg:text-[8vw] leading-[1] font-black uppercase "
-            style={{ fontFamily: "Druk Wide Cy Web Bold Regular, sans-serif" }}
+            className="text-[10vw] lg:text-[8vw] leading-[0.9] text-black uppercase"
+            style={{ 
+              fontFamily: '"Zalando Sans", sans-serif', 
+              fontWeight: 900 
+            }}
           >
             Next Level <br />
-            <span className="text-transparent [-webkit-text-stroke:1px_black] hover:text-[#B9935B] transition-colors duration-500">
+            {/* Outline text effect for the second word */}
+            <span 
+              className="text-transparent hover:text-[#B9935B] transition-colors duration-500"
+              style={{ WebkitTextStroke: '1px black' }}
+            >
               Revenue
             </span>
           </h2>
         </div>
 
         {/* --- The "Boarding Pass" CTA --- */}
-        <div className="flex justify-center pb-8"> {/* Added padding bottom to accommodate hover translate */}
+        <div className="flex justify-center pb-8">
           <a
             ref={ticketRef}
             href="https://calendly.com/apdigitalagency/30-minute-landing-page-consultation"
@@ -115,27 +132,64 @@ function HomeContactSection() {
                 
                 <div className="flex justify-between mb-8 relative z-10">
                     <div>
-                        <p className="font-mono text-xs uppercase text-gray-400 mb-1">Session Type</p>
-                        <p className="font-bold text-base md:text-lg uppercase">Audit & Strategy</p>
+                        <p 
+                          className="text-xs uppercase text-gray-400 mb-1"
+                          style={{ fontFamily: '"IBM Plex Mono", monospace' }}
+                        >
+                          Session Type
+                        </p>
+                        <p 
+                          className="text-base md:text-lg uppercase"
+                          style={{ 
+                            fontFamily: '"Zalando Sans", sans-serif', 
+                            fontWeight: 900 
+                          }}
+                        >
+                          Audit & Strategy
+                        </p>
                     </div>
-                    <div>
-                        <p className="font-mono text-xs uppercase text-gray-400 mb-1">Time</p>
-                        <p className="font-bold text-base md:text-lg">30 Min</p>
+                    <div className="text-right">
+                        <p 
+                          className="text-xs uppercase text-gray-400 mb-1"
+                          style={{ fontFamily: '"IBM Plex Mono", monospace' }}
+                        >
+                          Time
+                        </p>
+                        <p 
+                          className="text-base md:text-lg"
+                          style={{ 
+                            fontFamily: '"Zalando Sans", sans-serif', 
+                            fontWeight: 900 
+                          }}
+                        >
+                          30 Min
+                        </p>
                     </div>
                 </div>
 
                 <div className="flex items-center gap-4 relative z-10">
-                      <div className="w-12 h-12 bg-[#B9935B] text-white flex items-center justify-center rounded-full shrink-0 group-hover:scale-110 transition-transform duration-300">
+                      <div 
+                        className="w-12 h-12 text-white flex items-center justify-center rounded-full shrink-0 group-hover:scale-110 transition-transform duration-300"
+                        style={{ backgroundColor: COLORS.gold }}
+                      >
                         <IconBarcode />
                       </div>
                       <div>
                         <p 
-                          className="font-bold text-lg md:text-xl uppercase leading-tight"
-                          style={{ fontFamily: "Druk Wide Cy Web Bold Regular, sans-serif" }}
+                          className="text-lg md:text-xl uppercase leading-none mb-1"
+                          style={{ 
+                            fontFamily: '"Zalando Sans", sans-serif', 
+                            fontWeight: 900 
+                          }}
                         >
                           Free Consultation
                         </p>
-                        <p className="text-sm text-gray-500 group-hover:text-[#B9935B] transition-colors">Claim your spot now</p>
+                        <p 
+                          className="text-sm text-gray-500 group-hover:text-[#B9935B] transition-colors"
+                          style={{ fontFamily: '"IBM Plex Mono", monospace' }}
+                        >
+                          Claim your spot now
+                        </p>
                       </div>
                 </div>
             </div>
@@ -145,10 +199,12 @@ function HomeContactSection() {
                 <div 
                   className="flex flex-row md:flex-col items-center gap-3 text-[#FFFBF6] group-hover:text-black z-10"
                 >
-                    {/* Fixed Hydration Issue: Used Tailwind arbitrary value for writing-mode instead of JS conditional */}
                     <span 
-                      className="font-bold uppercase tracking-widest text-sm md:text-xs lg:text-sm md:[writing-mode:vertical-rl] rotate-0"
-                      style={{ fontFamily: "Druk Wide Cy Web Bold Regular, sans-serif" }}
+                      className="uppercase tracking-widest text-sm md:text-xs lg:text-sm md:[writing-mode:vertical-rl] rotate-0"
+                      style={{ 
+                        fontFamily: '"Zalando Sans", sans-serif', 
+                        fontWeight: 900 
+                      }}
                     >
                         Book Now
                     </span>

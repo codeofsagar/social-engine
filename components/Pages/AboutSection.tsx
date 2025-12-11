@@ -176,8 +176,8 @@ function AboutSection() {
                        </span>
                    </div>
                    <div className="flex items-center gap-2">
-                       <span className="text-[8px] text-gray-500 font-mono">REC</span>
-                       <div className="w-2 h-2 bg-red-500 rounded-full animate-pulse shadow-[0_0_8px_red]"></div>
+                       <span className="text-[12px] text-gray-500 font-mono">REC</span>
+                       <div className="w-4 h-4 bg-red-500 rounded-full animate-pulse shadow-[0_0_8px_red]"></div>
                    </div>
                </div>
 
@@ -185,8 +185,8 @@ function AboutSection() {
                <div className="relative p-8 overflow-hidden h-64 flex flex-col justify-center">
                    
                    {/* Background Scrolling Data Stream */}
-                   <div className="absolute right-4 top-0 bottom-0 w-8 overflow-hidden opacity-20 pointer-events-none">
-                       <div className={`text-[8px] font-mono text-[${gold}] leading-tight animate-marquee-vertical`}>
+                   <div className="absolute right-4 top-0 bottom-0 w-8 overflow-hidden opacity-70 pointer-events-none">
+                       <div className={`text-[18px] font-mono text-[${gold}] leading-tight animate-marquee-vertical`}>
                            {Array(20).fill("011001 0xFF").map((t,i) => <div key={i}>{Math.random().toString(16).substring(2,8).toUpperCase()}</div>)}
                        </div>
                    </div>
@@ -199,7 +199,7 @@ function AboutSection() {
                        </div>
                        <p className={`text-gray-400 text-sm mt-2 border-l-2 border-[${gold}] pl-3`} style={{ fontFamily: fonts.body }}>
                            Average ROAS Uplift<br/>
-                           <span className="text-xs text-gray-600">Q1 Verified Data</span>
+                           <span className="text-xs text-gray-300">Q1 Verified Data</span>
                        </p>
                    </div>
 
@@ -238,7 +238,7 @@ function AboutSection() {
           
           {/* 1. INTRO PANEL */}
           <div className={`w-full md:w-[45vw] lg:w-[40vw] h-auto md:h-full flex-shrink-0 flex flex-col justify-center px-8 py-20 md:px-16 border-b-2 md:border-b-0 md:border-r-2 border-[${gold}] bg-[#050505]/95 relative overflow-hidden text-white`}>
-             <div className="absolute top-10 right-10 flex flex-col items-end opacity-30 font-mono text-[10px] text-[#B9935B]">
+             <div className="absolute top-10 right-10 flex flex-col items-end opacity-70 font-mono text-[12px] text-[#B9935B]">
                 <span>SYS_CFG: 884.22</span>
                 <span>MEM_ALLOC: 99%</span>
              </div>
@@ -285,10 +285,10 @@ function AboutSection() {
                       src={step.img}
                       alt={step.title}
                       fill
-                      className="object-cover grayscale contrast-125 group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700"
+                      className="object-cover  contrast-125 group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700"
                     />
-                    <div className="absolute inset-0 bg-[linear-gradient(rgba(18,16,11,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] z-10 background-size-[100%_2px,3px_100%] pointer-events-none"></div>
-                    <div className={`absolute bottom-2 right-2 text-7xl font-black text-transparent [-webkit-text-stroke:1px_white] opacity-50 z-20 group-hover:text-[${gold}] group-hover:[-webkit-text-stroke:0px] transition-all`} style={{ fontFamily: fonts.header }}>
+                   
+                    <div className={`absolute bottom-2 right-2 text-7xl font-black text-transparent text-white opacity-90 z-20 group-hover:text-[${gold}] group-hover:[-webkit-text-stroke:0px] transition-all`} style={{ fontFamily: fonts.header }}>
                         {step.id}
                     </div>
                 </div>

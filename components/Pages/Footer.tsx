@@ -6,6 +6,12 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { IconArrowUpRight } from "@tabler/icons-react";
 
+const COLORS = {
+  gold: "#B9935B",
+  black: "#050505",
+  white: "#FFFBF6"
+};
+
 function Footer() {
   const footerRef = useRef<HTMLDivElement>(null);
   const currentYear = new Date().getFullYear();
@@ -33,15 +39,16 @@ function Footer() {
     <footer 
       ref={footerRef}
       className="bg-[#050505] text-[#FFFBF6] pt-16 md:pt-24 overflow-hidden relative"
+      style={{ fontFamily: '"Inter", sans-serif' }}
     >
       {/* --- Background Elements --- */}
       
-      {/* 1. Noise Texture (Adjusted for Dark Background) */}
+      {/* 1. Noise Texture */}
       <div className="absolute inset-0 pointer-events-none opacity-[0.05] z-[0] mix-blend-overlay" 
            style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")` }}>
       </div>
 
-      {/* 2. Background Image (Abstract Structure/Grid) */}
+      {/* 2. Background Image */}
       <div 
         className="absolute inset-0 z-[0] opacity-[0.15] mix-blend-screen pointer-events-none"
         style={{
@@ -57,15 +64,20 @@ function Footer() {
         <div className="flex flex-col lg:flex-row justify-between items-start lg:items-end gap-8 lg:gap-12">
           <div>
             <p 
-              className="text-[#B9935B] text-xs md:text-sm uppercase tracking-widest mb-4"
-              style={{ fontFamily: "Druk Wide Cy Web Bold Regular" }}
+              className="text-xs md:text-sm uppercase tracking-widest mb-4"
+              style={{ 
+                fontFamily: '"IBM Plex Mono", monospace', 
+                color: COLORS.gold 
+              }}
             >
               Next Steps
             </p>
-            {/* UPDATED: Used clamp() to handle the wide font on mobile. */}
             <h2 
-              className="text-[clamp(2rem,7vw,5rem)] font-bold uppercase leading-[0.9]"
-              style={{ fontFamily: "Druk Wide Cy Web Bold Regular" }}
+              className="text-[clamp(2.5rem,7vw,6rem)] leading-[0.9] uppercase"
+              style={{ 
+                fontFamily: '"Zalando Sans", sans-serif', 
+                fontWeight: 900 
+              }}
             >
               Have an <br />
               Idea?
@@ -75,8 +87,11 @@ function Footer() {
           <div className="group relative mt-4 lg:mt-0">
              <Link 
                 href="/contact"
-                className="flex items-center gap-4 text-xl md:text-2xl lg:text-3xl font-medium uppercase border-b border-[#B9935B]/50 pb-2 group-hover:border-[#B9935B] group-hover:text-[#B9935B] transition-all duration-300"
-                style={{ fontFamily: "Druk Wide Cy Web Bold Regular" }}
+                className="flex items-center gap-4 text-xl md:text-2xl lg:text-3xl uppercase border-b border-[#B9935B]/50 pb-2 group-hover:border-[#B9935B] group-hover:text-[#B9935B] transition-all duration-300"
+                style={{ 
+                  fontFamily: '"Zalando Sans", sans-serif', 
+                  fontWeight: 900 
+                }}
              >
                 Start a Project
                 <IconArrowUpRight 
@@ -94,10 +109,13 @@ function Footer() {
             
             {/* Col 1: Description */}
             <div className="py-10 lg:pr-12">
-                <div className="w-10 h-10 md:w-12 md:h-12 mb-6 bg-[#B9935B] rounded-full flex items-center justify-center text-black font-bold text-lg md:text-xl">
+                <div 
+                  className="w-10 h-10 md:w-12 md:h-12 mb-6 rounded-full flex items-center justify-center text-black font-bold text-lg md:text-xl"
+                  style={{ backgroundColor: COLORS.gold, fontFamily: '"Zalando Sans", sans-serif', fontWeight: 900 }}
+                >
                     AP
                 </div>
-                <p className="text-gray-400 leading-relaxed text-sm">
+                <p className="text-gray-400 leading-relaxed text-sm font-light">
                     We create high-performance ad strategies that capture attention, target the right audience, and turn clicks into customers.
                 </p>
             </div>
@@ -105,15 +123,18 @@ function Footer() {
             {/* Col 2: Navigation */}
             <div className="py-10 md:px-12">
                 <h4 
-                  className="text-xs uppercase text-[#B9935B] mb-6 tracking-widest"
-                  style={{ fontFamily: "Druk Wide Cy Web Bold Regular" }}
+                  className="text-xs uppercase mb-6 tracking-widest"
+                  style={{ 
+                    fontFamily: '"IBM Plex Mono", monospace',
+                    color: COLORS.gold
+                  }}
                 >
                   Sitemap
                 </h4>
                 <ul className="space-y-4">
                     {['Home', 'Services', 'Packages', 'Reviews'].map((item) => (
                         <li key={item}>
-                            <Link href={`#${item.toLowerCase()}`} className="text-base md:text-lg hover:text-[#B9935B] transition-colors inline-block">
+                            <Link href={`#${item.toLowerCase()}`} className="text-base md:text-lg hover:text-[#B9935B] transition-colors inline-block font-medium">
                                 {item}
                             </Link>
                         </li>
@@ -124,23 +145,26 @@ function Footer() {
             {/* Col 3: Contact */}
             <div className="py-10 md:px-12">
                 <h4 
-                  className="text-xs uppercase text-[#B9935B] mb-6 tracking-widest"
-                  style={{ fontFamily: "Druk Wide Cy Web Bold Regular" }}
+                  className="text-xs uppercase mb-6 tracking-widest"
+                  style={{ 
+                    fontFamily: '"IBM Plex Mono", monospace',
+                    color: COLORS.gold
+                  }}
                 >
                   Contact
                 </h4>
                 <ul className="space-y-6">
                     <li>
-                        <p className="text-xs text-gray-500 mb-1">Inquiries</p>
-                        <a href="mailto:info@apagency.ca" className="text-base md:text-lg hover:text-[#B9935B] transition-colors break-words">info@apagency.ca</a>
+                        <p className="text-xs text-gray-500 mb-1" style={{ fontFamily: '"IBM Plex Mono", monospace' }}>Inquiries</p>
+                        <a href="mailto:info@apagency.ca" className="text-base md:text-lg hover:text-[#B9935B] transition-colors break-words font-medium">info@apagency.ca</a>
                     </li>
                     <li>
-                        <p className="text-xs text-gray-500 mb-1">Phone</p>
-                        <a href="tel:6474240504" className="text-base md:text-lg hover:text-[#B9935B] transition-colors">(647) 424-0504</a>
+                        <p className="text-xs text-gray-500 mb-1" style={{ fontFamily: '"IBM Plex Mono", monospace' }}>Phone</p>
+                        <a href="tel:6474240504" className="text-base md:text-lg hover:text-[#B9935B] transition-colors font-medium">(647) 424-0504</a>
                     </li>
                     <li>
-                        <p className="text-xs text-gray-500 mb-1">HQ</p>
-                        <p className="text-base md:text-lg text-gray-300">Richmond Hill, ON<br/>Canada</p>
+                        <p className="text-xs text-gray-500 mb-1" style={{ fontFamily: '"IBM Plex Mono", monospace' }}>HQ</p>
+                        <p className="text-base md:text-lg text-gray-300 font-medium">Richmond Hill, ON<br/>Canada</p>
                     </li>
                 </ul>
             </div>
@@ -149,17 +173,20 @@ function Footer() {
             <div className="py-10 md:pl-12 flex flex-col justify-between">
                 <div>
                     <h4 
-                      className="text-xs uppercase text-[#B9935B] mb-6 tracking-widest"
-                      style={{ fontFamily: "Druk Wide Cy Web Bold Regular" }}
+                      className="text-xs uppercase mb-6 tracking-widest"
+                      style={{ 
+                        fontFamily: '"IBM Plex Mono", monospace',
+                        color: COLORS.gold
+                      }}
                     >
                       Hours
                     </h4>
-                    <p className="text-sm text-gray-400 mb-2"><span className="text-white">Mon-Fri:</span> 9am - 7pm</p>
-                    <p className="text-sm text-gray-400"><span className="text-white">Sat:</span> 12pm - 4pm</p>
+                    <p className="text-sm text-gray-400 mb-2 font-mono"><span className="text-white">Mon-Fri:</span> 9am - 7pm</p>
+                    <p className="text-sm text-gray-400 font-mono"><span className="text-white">Sat:</span> 12pm - 4pm</p>
                 </div>
                 
                 <div className="mt-8 lg:mt-0 pt-8 border-t border-[#B9935B]/50 lg:border-0 lg:pt-0">
-                    <p className="text-xs text-gray-600">
+                    <p className="text-xs text-gray-600" style={{ fontFamily: '"IBM Plex Mono", monospace' }}>
                         &copy; {currentYear} AP Agency.<br/>All rights reserved.
                     </p>
                 </div>
@@ -170,11 +197,17 @@ function Footer() {
       </div>
 
       {/* 3. Massive Brand Watermark */}
-      <div className="border-t border-[#B9935B]/50 bg-[#B9935B] overflow-hidden w-full relative z-10">
+      <div 
+        className="border-t border-[#B9935B]/50 overflow-hidden w-full relative z-10"
+        style={{ backgroundColor: COLORS.gold }}
+      >
         <div className="footer-brand-text flex justify-center w-full pt-4 pb-2">
             <h1 
-              className="text-[10vw] font-black uppercase text-[#050505] mix-blend-multiply leading-none"
-              style={{ fontFamily: "Druk Wide Cy Web Bold Regular" }}
+              className="text-[13vw] uppercase text-[#050505] mix-blend-multiply leading-none"
+              style={{ 
+                fontFamily: '"Zalando Sans", sans-serif', 
+                fontWeight: 900 
+              }}
             >
                 AP Agency
             </h1>

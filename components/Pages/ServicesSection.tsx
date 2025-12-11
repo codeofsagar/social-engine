@@ -113,12 +113,12 @@ function ServicesSection() {
          {/* === NEW HEADER BACKGROUND IMAGE START === */}
          {/* Using an abstract data/network image. Grayscale filter added to match style. */}
          <div 
-            className="absolute inset-0 z-0 opacity-15 mix-blend-luminosity pointer-events-none"
+            className="absolute inset-0 z-0 opacity-95 pointer-events-none backdrop-blur-md"
             style={{
                 backgroundImage: `url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop&ixlib=rb-4.0.3')`,
                 backgroundSize: 'cover',
                 backgroundPosition: 'center center',
-                filter: 'grayscale(100%) contrast(150%)' 
+                filter: 'brightness(0.4) blur(2px)' 
             }}
          ></div>
          {/* === NEW HEADER BACKGROUND IMAGE END === */}
@@ -143,10 +143,10 @@ function ServicesSection() {
 
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-end">
                 <div className="lg:col-span-7">
-                <h2 className="text-[13vw] lg:text-[10vw] leading-[0.85] font-black uppercase text-black " style={{ fontFamily: fonts.header }}>
+                <h2 className="text-[13vw] lg:text-[10vw] leading-[0.85] font-black uppercase text-white " style={{ fontFamily: fonts.header }}>
                     <div className="overflow-hidden"><div className="reveal-text">Scale</div></div>
                     <div className="overflow-hidden flex items-center gap-4">
-                        <div className="reveal-text text-transparent [-webkit-text-stroke:2px_#B9935B]">Now</div>
+                        <div className="reveal-text  text-[#B9935B]">Now</div>
                         <ArrowRight className="w-[8vw] h-[8vw] text-black -rotate-45 hidden lg:block" strokeWidth={3} />
                     </div>
                 </h2>
