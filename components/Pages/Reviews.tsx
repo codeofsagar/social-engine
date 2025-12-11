@@ -111,8 +111,26 @@ function Reviews() {
       id="reviews"
       className="bg-[#FFFBF6] text-black min-h-screen flex flex-col justify-center relative overflow-hidden py-24"
     >
-      {/* Background Typography Watermark */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full text-center select-none pointer-events-none opacity-[0.07]">
+      {/* --- Background Elements --- */}
+      
+      {/* 1. Noise Texture (Lowest Layer) */}
+      <div className="absolute inset-0 pointer-events-none opacity-[0.04] z-[0] mix-blend-multiply" 
+           style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")` }}>
+      </div>
+
+      {/* 2. Background Image (Corporate/Abstract Architecture) */}
+      <div 
+        className="absolute inset-0 z-[1] opacity-[0.06] mix-blend-luminosity pointer-events-none"
+        style={{
+            backgroundImage: `url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop')`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            filter: 'grayscale(100%)' 
+        }}
+      ></div>
+
+      {/* 3. Typography Watermark */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full text-center select-none pointer-events-none opacity-[0.05] z-[2]">
         <h1 
           className="text-[20vw] font-black uppercase tracking-tighter leading-none text-black"
           style={{ fontFamily: "Druk Wide Cy Web Bold Regular" }}
@@ -139,7 +157,8 @@ function Reviews() {
             
             {/* Left: Image & Controls */}
             <div className="lg:col-span-5 relative">
-                <div className="relative aspect-[4/5] overflow-hidden rounded-sm bg-gray-200">
+                {/* Image Container with Border */}
+                <div className="relative aspect-[4/5] overflow-hidden rounded-sm bg-gray-200 border border-black shadow-[8px_8px_0px_rgba(0,0,0,0.1)]">
                     <AnimatePresence mode="wait">
                         <motion.img
                             key={TESTIMONIALS[active].id}
@@ -158,7 +177,7 @@ function Reviews() {
                 </div>
 
                 {/* Progress Bar (Attached to image) */}
-                <div className="absolute bottom-0 left-0 w-full h-1 bg-black/20">
+                <div className="absolute bottom-0 left-0 w-full h-1 bg-black/20 z-20">
                     <motion.div 
                         className="h-full bg-[#B9935B]"
                         style={{ width: `${progress}%` }}
@@ -169,13 +188,13 @@ function Reviews() {
                 <div className="absolute -bottom-8 right-0 translate-y-full flex gap-4">
                     <button 
                         onClick={handlePrev}
-                        className="w-14 h-14 border border-black flex items-center justify-center hover:bg-black hover:text-[#B9935B] transition-colors duration-300"
+                        className="w-14 h-14 border border-black flex items-center justify-center bg-[#FFFBF6] hover:bg-black hover:text-[#B9935B] transition-colors duration-300"
                     >
                         <IconArrowLeft size={20} />
                     </button>
                     <button 
                         onClick={handleNext}
-                        className="w-14 h-14 border border-black flex items-center justify-center hover:bg-black hover:text-[#B9935B] transition-colors duration-300"
+                        className="w-14 h-14 border border-black flex items-center justify-center bg-[#FFFBF6] hover:bg-black hover:text-[#B9935B] transition-colors duration-300"
                     >
                         <IconArrowRight size={20} />
                     </button>

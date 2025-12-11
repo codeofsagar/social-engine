@@ -34,8 +34,26 @@ function Footer() {
       ref={footerRef}
       className="bg-[#050505] text-[#FFFBF6] pt-16 md:pt-24 overflow-hidden relative"
     >
+      {/* --- Background Elements --- */}
+      
+      {/* 1. Noise Texture (Adjusted for Dark Background) */}
+      <div className="absolute inset-0 pointer-events-none opacity-[0.05] z-[0] mix-blend-overlay" 
+           style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")` }}>
+      </div>
+
+      {/* 2. Background Image (Abstract Structure/Grid) */}
+      <div 
+        className="absolute inset-0 z-[0] opacity-[0.15] mix-blend-screen pointer-events-none"
+        style={{
+            backgroundImage: `url('https://images.unsplash.com/photo-1485627941502-d2e6429fa8af?q=80&w=2072&auto=format&fit=crop')`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            filter: 'grayscale(100%) contrast(120%)' 
+        }}
+      ></div>
+
       {/* 1. Main Call to Action Area */}
-      <div className="container mx-auto px-4 md:px-6 lg:px-12 mb-16 md:mb-24">
+      <div className="container mx-auto px-4 md:px-6 lg:px-12 mb-16 md:mb-24 relative z-10">
         <div className="flex flex-col lg:flex-row justify-between items-start lg:items-end gap-8 lg:gap-12">
           <div>
             <p 
@@ -44,11 +62,9 @@ function Footer() {
             >
               Next Steps
             </p>
-            {/* UPDATED: Used clamp() to handle the wide font on mobile.
-                Scales from 2.5rem (mobile) up to 7rem (desktop).
-            */}
+            {/* UPDATED: Used clamp() to handle the wide font on mobile. */}
             <h2 
-              className="text-[clamp(2rem,7vw,5rem)] font-bold uppercase  leading-[0.9]"
+              className="text-[clamp(2rem,7vw,5rem)] font-bold uppercase leading-[0.9]"
               style={{ fontFamily: "Druk Wide Cy Web Bold Regular" }}
             >
               Have an <br />
@@ -72,7 +88,7 @@ function Footer() {
       </div>
 
       {/* 2. Architectural Grid Info */}
-      <div className="border-t border-[#B9935B]/50">
+      <div className="border-t border-[#B9935B]/50 relative z-10 bg-[#050505]/80 backdrop-blur-sm">
         <div className="container mx-auto px-4 md:px-6 lg:px-12">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 divide-y md:divide-y-0 md:divide-x divide-[#B9935B]/50">
             
@@ -154,13 +170,10 @@ function Footer() {
       </div>
 
       {/* 3. Massive Brand Watermark */}
-      <div className="border-t border-[#B9935B]/50 bg-[#B9935B] overflow-hidden w-full">
+      <div className="border-t border-[#B9935B]/50 bg-[#B9935B] overflow-hidden w-full relative z-10">
         <div className="footer-brand-text flex justify-center w-full pt-4 pb-2">
-            {/* UPDATED: Reduced from 16vw to 12vw to account for font width. 
-                This prevents it from overflowing or looking too aggressive on smaller screens.
-            */}
             <h1 
-              className="text-[10vw] font-black uppercase  text-[#050505] mix-blend-multiply leading-none"
+              className="text-[10vw] font-black uppercase text-[#050505] mix-blend-multiply leading-none"
               style={{ fontFamily: "Druk Wide Cy Web Bold Regular" }}
             >
                 AP Agency

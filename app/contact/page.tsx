@@ -43,8 +43,8 @@ function ContactSection() {
             duration: 1.2,
             ease: "power4.out",
             scrollTrigger: {
-                trigger: containerRef.current,
-                start: "top 60%",
+              trigger: containerRef.current,
+              start: "top 60%",
             }
         }
     );
@@ -67,8 +67,26 @@ function ContactSection() {
       ref={containerRef}
       className="bg-[#FFFBF6] text-black min-h-screen relative overflow-hidden flex flex-col pt-32 lg:pt-48"
     >
-      {/* Decorative Grid Background */}
-      <div className="absolute inset-0 w-full h-full z-0 opacity-[0.03] pointer-events-none" 
+      {/* --- Background Elements --- */}
+      
+      {/* 1. Noise Texture (Lowest Layer) */}
+      <div className="absolute inset-0 pointer-events-none opacity-[0.04] z-[0] mix-blend-multiply" 
+           style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")` }}>
+      </div>
+
+      {/* 2. Background Image (Global Network/Map) */}
+      <div 
+        className="absolute inset-0 z-[1] opacity-[0.08] mix-blend-multiply pointer-events-none"
+        style={{
+            backgroundImage: `url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop')`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            filter: 'grayscale(100%) contrast(120%)' 
+        }}
+      ></div>
+
+      {/* 3. Decorative Grid Background (Preserved) */}
+      <div className="absolute inset-0 w-full h-full z-[1] opacity-[0.05] pointer-events-none" 
            style={{ backgroundImage: 'linear-gradient(#000 1px, transparent 1px), linear-gradient(90deg, #000 1px, transparent 1px)', backgroundSize: '40px 40px' }}>
       </div>
 
@@ -81,12 +99,15 @@ function ContactSection() {
             <div className="w-full lg:w-1/2">
                 <div className="overflow-hidden mb-4">
                     <p className="font-mono text-xs md:text-sm uppercase tracking-[0.2em] text-[#B9935B] reveal-text">
-                         Status: Open for Business
+                          Status: Open for Business
                     </p>
                 </div>
                 
-                {/* Responsive Headline: breaks words if needed, scales with viewport */}
-                <h2 className="w-full text-[10vw] lg:text-[7vw] leading-[1] font-black uppercase  mb-8 mix-blend-darken break-words hyphens-auto">
+                {/* Responsive Headline */}
+                <h2 
+                  className="w-full text-[8vw] lg:text-[5vw] leading-[0.9] font-black uppercase mb-8 mix-blend-darken break-words hyphens-auto"
+                  style={{ fontFamily: "Druk Wide Cy Web Bold Regular" }}
+                >
                     <div className="overflow-hidden"><div className="reveal-text">Ready to</div></div>
                     <div className="overflow-hidden"><div className="reveal-text text-[#B9935B]">Dominate?</div></div>
                 </h2>
@@ -117,7 +138,10 @@ function ContactSection() {
                     <div className="flex justify-between items-start border-b-2 border-black/10 group-hover:border-white/20 pb-6 mb-6 pt-4 transition-colors">
                         <div>
                             <span className="block text-xs font-mono uppercase tracking-widest text-[#B9935B] mb-2">Priority Access</span>
-                            <h3 className="text-3xl md:text-4xl font-bold uppercase leading-none">
+                            <h3 
+                              className="text-3xl md:text-4xl font-bold uppercase leading-none"
+                              style={{ fontFamily: "Druk Wide Cy Web Bold Regular" }}
+                            >
                                 Landing Page<br/>Audit
                             </h3>
                         </div>
@@ -160,7 +184,7 @@ function ContactSection() {
       </div>
 
       {/* --- Marquee Separator --- */}
-      <div className="relative w-full overflow-hidden bg-black text-[#B9935B] py-4 border-y border-[#B9935B]">
+      <div className="relative w-full overflow-hidden bg-black text-[#B9935B] py-4 border-y border-[#B9935B] z-20">
         <div ref={marqueeRef} className="flex whitespace-nowrap w-max">
             <div className="flex gap-8 items-center pr-8">
                 {[...Array(2)].map((_, i) => (
@@ -180,7 +204,7 @@ function ContactSection() {
       </div>
 
       {/* --- Bottom Map Section (Full Width Architectural) --- */}
-      <div className="relative w-full h-[400px] lg:h-[500px] grayscale contrast-125 border-t-4 border-black group overflow-hidden">
+      <div className="relative w-full h-[400px] lg:h-[500px] grayscale contrast-125 border-t-4 border-black group overflow-hidden z-10">
          {/* Overlay Grid */}
          <div className="absolute inset-0 z-10 pointer-events-none bg-[linear-gradient(rgba(0,0,0,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.1)_1px,transparent_1px)] bg-[size:100px_100px]"></div>
          
@@ -195,8 +219,9 @@ function ContactSection() {
              Signal: Active
          </div>
 
+         {/* Updated Map Embed URL for Richmond Hill */}
          <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2878.1331787625924!2d-79.44073852358554!3d43.83050503809834!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x882b2b9e7c0b3f8d%3A0x5d5a7a9a1a0a0a0a!2s10330%20Yonge%20St%2C%20Richmond%20Hill%2C%20ON%20L4C%205N1%2C%20Canada!5e0!3m2!1sen!2sus!4v1657656789012!5m2!1sen!2sus"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2876.5369664539665!2d-79.4429949232938!3d43.865444671092824!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x882b2bb08a17684d%3A0x63351322005822e8!2s10330%20Yonge%20St%2C%20Richmond%20Hill%2C%20ON%20L4C%205N1!5e0!3m2!1sen!2sca!4v1709230000000!5m2!1sen!2sca"
             width="100%"
             height="100%"
             style={{ border: 0 }}

@@ -3,7 +3,7 @@ import { useRef, useEffect, useState, Suspense } from "react";
 import Link from "next/link";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-import { ArrowRight, PlayCircle } from "lucide-react";
+import { ArrowRight, PlayCircle, Terminal } from "lucide-react";
 
 // --- 3D IMPORTS ---
 import { Canvas, useFrame } from "@react-three/fiber";
@@ -189,13 +189,24 @@ function HeroSection() {
       ========================================= */}
       <div className="container mx-auto px-4 md:px-6 relative z-20 flex flex-col items-center text-center">
         
-        
+        {/* Badge / Console Text (Using IBM Plex Mono) */}
+        <div 
+            className="hero-badge mb-6 md:mb-8 inline-flex items-center gap-2 px-3 py-1 bg-white/5 border border-white/10 backdrop-blur-sm"
+        >
+             <div className="w-1.5 h-1.5 rounded-full bg-[#B9935B] animate-pulse"/>
+             <span 
+                className="text-[10px] md:text-xs text-[#B9935B] uppercase tracking-[0.2em]" 
+                style={{ fontFamily: 'IBM Plex Mono' }}
+             >
+                Agency System Online
+             </span>
+        </div>
 
-        {/* Cinematic Headline - SIZING REDUCED HERE */}
+        {/* Cinematic Headline - Zalando Sans Black 900 */}
         <div className="max-w-5xl mx-auto w-full">
             <h1 
-              className="flex flex-col items-center justify-center font-black  tracking-tighter mb-8 md:mb-10"
-              style={{ fontFamily: "Druk Wide Cy Web Bold Regular" }}
+              className="flex flex-col items-center justify-center tracking-tighter mb-8 md:mb-10"
+              style={{ fontFamily: "Zalando Sans", fontWeight: 900 }}
             >
               {/* LINE 1: WHITE */}
               <div className="overflow-hidden">
@@ -214,7 +225,7 @@ function HeroSection() {
               {/* LINE 3: HOLLOW / STROKED */}
               <div className="overflow-hidden">
                   <span 
-                    className="hero-line block text-transparent text-[7vw] md:text-[4vw] [-webkit-text-stroke:1px_rgba(255,255,255,0.8)] md:[-webkit-text-stroke:1px_rgba(255,255,255,0.8)] opacity-60"
+                    className="hero-line block text-white text-[7vw] md:text-[4vw] "
                   >
                     BAD MARKETING
                   </span>
@@ -222,33 +233,39 @@ function HeroSection() {
             </h1>
         </div>
 
-        {/* Description */}
-        <p className="hero-fade-up text-sm md:text-base text-gray-400 max-w-[80%] md:max-w-xl leading-relaxed mb-10 font-mono uppercase tracking-widest border-l-2 border-[#B9935B] pl-4 md:pl-6 text-left md:text-center md:border-l-0 md:border-t-2 md:pt-6">
+        {/* Description - Inter (Plain Text) */}
+        <p 
+            className="hero-fade-up text-sm md:text-base text-gray-400 max-w-[80%] md:max-w-xl leading-relaxed mb-10 border-l-2 border-[#B9935B] pl-4 md:pl-6 text-left md:text-center md:border-l-0 md:border-t-2 md:pt-6"
+            style={{ fontFamily: 'Inter' }}
+        >
           We combine cinematic visuals with data-driven strategies to convert your ad spend into measurable profit.
         </p>
 
         {/* Magnetic Button Group */}
         <div className="hero-fade-up flex flex-col md:flex-row gap-6 items-center">
             
-            {/* Main CTA */}
+            {/* Main CTA - Inter, Uppercase, No Rounded Corners */}
             <Link 
               href="/contact"
-              className="group relative inline-flex items-center justify-center px-8 py-4 md:px-10 md:py-5 bg-[#B9935B] text-black overflow-hidden transition-all duration-300 hover:bg-white"
+              className="group relative inline-flex items-center justify-center px-8 py-4 md:px-10 md:py-5 bg-[#B9935B] text-black overflow-hidden transition-all duration-300 hover:bg-white rounded-none"
             >
                <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-in-out" />
                <span 
                  className="relative z-10 font-bold text-xs md:text-sm uppercase tracking-widest"
-                 style={{ fontFamily: "Druk Wide Cy Web Bold Regular" }} 
+                 style={{ fontFamily: "Inter" }} 
                >
                  Start Growth
                </span>
                <ArrowRight className="relative z-10 w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" />
             </Link>
 
-            {/* Secondary CTA */}
-            <button className="group flex items-center gap-3 text-white/70 hover:text-[#B9935B] transition-colors uppercase text-[10px] md:text-xs font-bold tracking-widest">
+            {/* Secondary CTA - Inter, Uppercase */}
+            <button 
+                className="group flex items-center gap-3 text-white/70 hover:text-[#B9935B] transition-colors uppercase text-[10px] md:text-xs font-bold tracking-widest rounded-none"
+                style={{ fontFamily: 'Inter' }}
+            >
                 <PlayCircle className="w-8 h-8 md:w-10 md:h-10 stroke-1 group-hover:scale-110 transition-transform" />
-                <span>Watch <br/> Showreel</span>
+                <span className="text-left">Watch <br/> Showreel</span>
             </button>
         </div>
 
