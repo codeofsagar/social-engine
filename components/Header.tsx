@@ -15,10 +15,11 @@ const Header = () => {
     { name: 'Reviews', href: '/#reviews' },
   ];
 
+  // Font applied globally to this component
   return (
-    <>
+    <div style={{ fontFamily: "'Kanit', sans-serif" }}>
       {/* Desktop Header */}
-      <header className="hidden md:flex fixed top-4 left-1/2 transform -translate-x-1/2 w-[80%] h-16 backdrop-blur-sm  rounded-lg bg-black/30 z-50 items-center px-8">
+      <header className="hidden md:flex fixed top-4 left-1/2 transform -translate-x-1/2 w-[80%] h-16 backdrop-blur-sm rounded-lg bg-black/30 z-50 items-center px-8">
         {/* Large overlapping logo */}
         <div className="absolute -top-6 left-4">
           <div className="relative h-32 w-32">
@@ -47,8 +48,8 @@ const Header = () => {
           </ul>
         </div>
 
-        {/* Contact button */}
-        <Link href="/contact" className="bg-[#B9935B] text-black rounded-full px-6 py-2 font-medium hover:bg-amber-700 transition-colors">
+        {/* Contact button - UPDATED: Removed rounded-full, added square corners */}
+        <Link href="/contact" className="bg-[#B9935B] text-black px-6 py-2 font-medium hover:bg-amber-700 transition-colors">
           Contact
         </Link>
       </header>
@@ -56,7 +57,7 @@ const Header = () => {
       {/* Mobile Header */}
       <header className="md:hidden fixed top-4 left-1/2 transform -translate-x-1/2 w-[80%] h-16 backdrop-blur-sm bg-black/30 rounded-lg z-50 flex items-center px-4">
         {/* Large overlapping logo */}
-        <div className="absolute  left-2">
+        <div className="absolute left-2">
           <div className="relative h-28 w-28">
             <Image 
               src="/images/logo.png" 
@@ -69,8 +70,9 @@ const Header = () => {
 
         {/* Contact button + hamburger */}
         <div className="ml-auto flex items-center gap-2">
+          {/* UPDATED: Removed rounded-full */}
           <Link href="/contact"
-            className="bg-[#B9935B] text-black rounded-full px-4 py-2 text-sm font-medium"
+            className="bg-[#B9935B] text-black px-4 py-2 text-sm font-medium"
           >
             Contact
           </Link>
@@ -114,7 +116,7 @@ const Header = () => {
           </ul>
         </div>
       )}
-    </>
+    </div>
   );
 };
 

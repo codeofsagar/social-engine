@@ -1,10 +1,10 @@
 "use client";
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import gsap from "gsap";
 import Link from "next/link";
-import { ArrowRight, Activity, Zap, BarChart3, CornerDownRight, Plus } from "lucide-react";       
+import { ArrowRight, Zap, BarChart3, CornerDownRight, Plus } from "lucide-react";       
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -50,13 +50,10 @@ const MARQUEE_ITEMS = [
 ];
 
 const fonts = {
-  // Assuming these fonts are loaded in your layout file
-  header: "'Zalando Sans', sans-serif", // Replace with a standard font if this isn't loaded, e.g., 'Arial Black'
+  header: "'Kanit', sans-serif", 
   mono: "'IBM Plex Mono', monospace",
   body: "'Inter', sans-serif",
 };
-
-const gold = "#B9935B";
 
 // Decorative Barcode Component
 const Barcode = () => (
@@ -71,7 +68,7 @@ function ServicesSection() {
   const containerRef = useRef<HTMLDivElement>(null);
 
   useGSAP(() => {
-    // 1. Text Reveal Animation
+    // Reverted to original snappy scroll animation (User didn't want this slowed)
     const titles = gsap.utils.toArray(".reveal-text") as HTMLElement[];
     titles.forEach((title) => {
       gsap.fromTo(
@@ -98,7 +95,7 @@ function ServicesSection() {
       className="bg-[#FFFBF6] text-black min-h-screen relative overflow-hidden selection:bg-black selection:text-[#B9935B]"
       style={{ fontFamily: fonts.body }}
     >
-      {/* Background Noise Texture (Paper feel) - Lowest Layer */}
+      {/* Background Noise Texture */}
       <div className="fixed inset-0 pointer-events-none opacity-[0.04] z-[0] mix-blend-multiply" 
            style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")` }}></div>
 
@@ -107,11 +104,7 @@ function ServicesSection() {
       <div className="absolute right-6 lg:right-20 top-0 bottom-0 w-[1px] bg-black/10 z-0"></div>
 
       {/* --- Header Section --- */}
-      {/* ADDED: relative and overflow-hidden here to contain the new background image */}
       <div className="relative border-b-2 border-black z-10 overflow-hidden">
-         
-         {/* === NEW HEADER BACKGROUND IMAGE START === */}
-         {/* Using an abstract data/network image. Grayscale filter added to match style. */}
          <div 
             className="absolute inset-0 z-0 opacity-95 pointer-events-none backdrop-blur-md"
             style={{
@@ -121,7 +114,6 @@ function ServicesSection() {
                 filter: 'brightness(0.4) blur(2px)' 
             }}
          ></div>
-         {/* === NEW HEADER BACKGROUND IMAGE END === */}
 
         <div className="pt-24 pb-16 px-6 lg:px-20 relative z-10">
             <div className="max-w-7xl mx-auto relative">
@@ -143,11 +135,11 @@ function ServicesSection() {
 
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-end">
                 <div className="lg:col-span-7">
-                <h2 className="text-[13vw] lg:text-[10vw] leading-[0.85] font-black uppercase text-white " style={{ fontFamily: fonts.header }}>
+                <h2 className="text-[11vw] lg:text-[7vw] font-black leading-[1] mb-8 text-white uppercase  " style={{ fontFamily: fonts.header }}>
                     <div className="overflow-hidden"><div className="reveal-text">Scale</div></div>
                     <div className="overflow-hidden flex items-center gap-4">
                         <div className="reveal-text  text-[#B9935B]">Now</div>
-                        <ArrowRight className="w-[8vw] h-[8vw] text-black -rotate-45 hidden lg:block" strokeWidth={3} />
+                        <ArrowRight className="w-[8vw] h-[8vw] text-white -rotate-45 hidden lg:block" strokeWidth={3} />
                     </div>
                 </h2>
                 </div>
@@ -172,21 +164,23 @@ function ServicesSection() {
         {SERVICES_DATA.map((service, index) => (
           <div
             key={index}
-            // === FIX APPLIED HERE === 
-            // Added 'overflow-hidden' to prevent the absolute hover background from bleeding out
-            className="group relative border-t border-black/10 hover:border-black transition-colors duration-0 cursor-pointer overflow-hidden"
+            className="group relative border-t border-black/10 hover:border-black transition-colors duration-500 cursor-pointer overflow-hidden"
           >
-            {/* INVERTED HOVER BACKGROUND */}
-            <div className="absolute inset-0 bg-black translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out z-0"></div>
+            {/* UPDATED HOVER ANIMATION:
+                1. duration-700 (slower)
+                2. ease-in-out (smoother start/end)
+            */}
+            <div className="absolute inset-0 bg-black translate-y-full group-hover:translate-y-0 transition-transform duration-700 ease-in-out z-0"></div>
 
-            <div className="max-w-7xl mx-auto px-6 lg:px-20 py-10 lg:py-16 flex flex-col md:flex-row gap-8 relative z-10 group-hover:text-white transition-colors duration-300">
+            {/* Content Container - Duration also matched to 700 to sync with background */}
+            <div className="max-w-7xl mx-auto px-6 lg:px-20 py-10 lg:py-16 flex flex-col md:flex-row gap-8 relative z-10 group-hover:text-white transition-colors duration-700">
               
               {/* Left: Number & Icon */}
               <div className="w-full md:w-1/4 flex items-start justify-between md:justify-start gap-4">
-                  <span className="text-5xl lg:text-7xl font-black text-transparent [-webkit-text-stroke:1px_#ccc] group-hover:[-webkit-text-stroke:1px_#B9935B] group-hover:text-[#B9935B] transition-all duration-300" style={{ fontFamily: fonts.header }}>
+                  <span className="text-5xl lg:text-7xl font-black text-transparent [-webkit-text-stroke:1px_#ccc] group-hover:[-webkit-text-stroke:1px_#B9935B] group-hover:text-[#B9935B] transition-all duration-700" style={{ fontFamily: fonts.header }}>
                     {service.num}
                   </span>
-                  <CornerDownRight className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-[#B9935B] mt-4" />
+                  <CornerDownRight className="opacity-0 group-hover:opacity-100 transition-opacity duration-700 delay-100 text-[#B9935B] mt-4" />
               </div>
 
               {/* Center: Content */}
@@ -194,15 +188,15 @@ function ServicesSection() {
                   <h3 className="text-4xl lg:text-5xl font-black uppercase mb-4 leading-none" style={{ fontFamily: fonts.header }}>
                     {service.title}
                   </h3>
-                  <p className="text-lg text-gray-600 group-hover:text-gray-300 font-medium max-w-sm transition-colors duration-300" style={{ fontFamily: fonts.body }}>
+                  <p className="text-lg text-gray-600 group-hover:text-gray-300 font-medium max-w-sm transition-colors duration-700" style={{ fontFamily: fonts.body }}>
                     {service.desc}
                   </p>
               </div>
 
-              {/* Right: Technical Tags (Barcode style) */}
+              {/* Right: Technical Tags */}
               <div className="w-full md:w-1/4 flex flex-wrap content-start gap-2 md:justify-end">
                   {service.tags.map((tag, i) => (
-                      <span key={i} className="text-[10px] uppercase font-bold tracking-widest border border-black/20 group-hover:border-white/30 px-3 py-2 bg-[#FFFBF6] group-hover:bg-white/10 group-hover:text-white transition-colors" style={{ fontFamily: fonts.mono }}>
+                      <span key={i} className="text-[10px] uppercase font-bold tracking-widest border border-black/20 group-hover:border-white/30 px-3 py-2 bg-[#FFFBF6] group-hover:bg-white/10 group-hover:text-white transition-colors duration-700" style={{ fontFamily: fonts.mono }}>
                           {tag}
                       </span>
                   ))}
@@ -232,7 +226,6 @@ function ServicesSection() {
       <div className="grid grid-cols-1 lg:grid-cols-2">
         {/* Left Panel: Stats */}
         <div className="border-r border-black p-12 lg:p-24 flex flex-col justify-center bg-[#FFFBF6] relative">
-              {/* Background decorative grid */}
             <div className="absolute inset-0 opacity-[0.05]" style={{ backgroundImage: `linear-gradient(#000 1px, transparent 1px), linear-gradient(90deg, #000 1px, transparent 1px)`, backgroundSize: '30px 30px' }}></div>
             
             <div className="relative z-10 flex flex-col gap-16">
@@ -259,15 +252,14 @@ function ServicesSection() {
 
         {/* Right Panel: CTA */}
         <div className="p-12 lg:p-24 flex flex-col justify-center items-center lg:items-start relative group bg-white overflow-hidden">
-            {/* Hover Reveal Background - GOLD */}
-            <div className="absolute inset-0 bg-[#B9935B] translate-x-full group-hover:translate-x-0 transition-transform duration-500 ease-in-out"></div>
+            <div className="absolute inset-0 bg-[#B9935B] translate-x-full group-hover:translate-x-0 transition-transform duration-700 ease-in-out"></div>
             
             <div className="absolute top-0 left-0 p-4 opacity-50 font-mono text-xs hidden lg:block group-hover:text-black transition-colors">
-                   START_PROJECT_SEQUENCE
+                    START_PROJECT_SEQUENCE
             </div>
 
             <div className="relative z-10">
-                <h3 className="text-6xl lg:text-7xl font-black uppercase mb-8 transition-colors duration-300 group-hover:text-black leading-[0.9]" style={{ fontFamily: fonts.header }}>
+                <h3 className="text-6xl lg:text-7xl font-black uppercase mb-8 transition-colors duration-700 group-hover:text-black leading-[0.9]" style={{ fontFamily: fonts.header }}>
                     Ready to <br/>Scale?
                 </h3>
                 

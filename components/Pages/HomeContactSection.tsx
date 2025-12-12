@@ -60,10 +60,7 @@ function HomeContactSection() {
     >
       {/* --- Background Elements --- */}
       
-      {/* 1. Noise Texture */}
-      <div className="absolute inset-0 pointer-events-none opacity-[0.04] z-[0] mix-blend-multiply" 
-           style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")` }}>
-      </div>
+      
 
       {/* 2. Background Image */}
       <div 
@@ -89,7 +86,7 @@ function HomeContactSection() {
             <span 
               className="text-xs uppercase tracking-widest"
               style={{ 
-                fontFamily: '"IBM Plex Mono", monospace', 
+                fontFamily: "'Kanit', sans-serif", 
                 color: COLORS.gold 
               }}
             >
@@ -98,9 +95,9 @@ function HomeContactSection() {
           </div>
           
           <h2 
-            className="text-[10vw] lg:text-[8vw] leading-[0.9] text-black uppercase"
+            className="text-[11vw] lg:text-[7vw] font-black leading-[0.9] mb-8 text-black uppercase tracking-tight"
             style={{ 
-              fontFamily: '"Zalando Sans", sans-serif', 
+              fontFamily:"'Kanit', sans-serif", 
               fontWeight: 900 
             }}
           >
@@ -141,7 +138,7 @@ function HomeContactSection() {
                         <p 
                           className="text-base md:text-lg uppercase"
                           style={{ 
-                            fontFamily: '"Zalando Sans", sans-serif', 
+                            fontFamily: "'Kanit', sans-serif",
                             fontWeight: 900 
                           }}
                         >
@@ -158,7 +155,7 @@ function HomeContactSection() {
                         <p 
                           className="text-base md:text-lg"
                           style={{ 
-                            fontFamily: '"Zalando Sans", sans-serif', 
+                            fontFamily: "'Kanit', sans-serif", 
                             fontWeight: 900 
                           }}
                         >
@@ -178,7 +175,7 @@ function HomeContactSection() {
                         <p 
                           className="text-lg md:text-xl uppercase leading-none mb-1"
                           style={{ 
-                            fontFamily: '"Zalando Sans", sans-serif', 
+                            fontFamily: "'Kanit', sans-serif",
                             fontWeight: 900 
                           }}
                         >
@@ -202,7 +199,7 @@ function HomeContactSection() {
                     <span 
                       className="uppercase tracking-widest text-sm md:text-xs lg:text-sm md:[writing-mode:vertical-rl] rotate-0"
                       style={{ 
-                        fontFamily: '"Zalando Sans", sans-serif', 
+                        fontFamily:"'Kanit', sans-serif", 
                         fontWeight: 900 
                       }}
                     >

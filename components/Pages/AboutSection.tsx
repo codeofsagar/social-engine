@@ -5,7 +5,7 @@ import { useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import gsap from "gsap";
-import { ArrowRight, Target, Lock, Disc, FastForward, Crosshair, Cpu, Activity, Server } from "lucide-react";
+import { ArrowRight, Lock, Disc, FastForward, Crosshair, BrainCircuit } from "lucide-react";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -60,6 +60,7 @@ function AboutSection() {
       servicesSection.scrollIntoView({ behavior: "smooth" });
     } else {
        if(scrollSection.current) {
+         // Scroll past the pinned section
          window.scrollTo({ top: scrollSection.current.offsetTop + scrollSection.current.offsetHeight, behavior: "smooth" });
       }
     }
@@ -98,7 +99,7 @@ function AboutSection() {
   );
 
   const fonts = {
-    header: "'Zalando Sans', sans-serif", 
+    header: "'Kanit', sans-serif",
     mono: "'IBM Plex Mono', monospace",   
     body: "'Inter', sans-serif",          
   };
@@ -113,8 +114,7 @@ function AboutSection() {
     >
       
       {/* GLOBAL BACKGROUND NOISE */}
-      <div className="fixed inset-0 pointer-events-none opacity-[0.03] z-[5] mix-blend-overlay" 
-           style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")` }}></div>
+     
 
       {/* --- TOP MARQUEE --- */}
       <div className={`relative bg-[${gold}] text-black overflow-hidden py-3 z-20 border-b-4 border-black`}>
@@ -150,7 +150,12 @@ function AboutSection() {
             
             <h2 className="text-[11vw] lg:text-[7vw] font-black leading-[0.9] mb-8 text-black uppercase tracking-tighter" style={{ fontFamily: fonts.header }}>
               <div className="overflow-hidden"><span className="about-line block">REVENUE</span></div>
-              <div className="overflow-hidden"><span className="about-line block text-transparent [-webkit-text-stroke:2px_#000]">ENGINEERING</span></div>
+            <div className="overflow-visible">
+  <span className="block text-transparent [-webkit-text-stroke:2px_black]">
+    ENGINEERING
+  </span>
+</div>
+
               <div className="overflow-hidden"><span className={`about-line block text-[${gold}]`}>NOT LUCK.</span></div>
             </h2>
             
@@ -163,43 +168,43 @@ function AboutSection() {
             </div>
           </div>
 
-          {/* --- NEW 45X CARD DESIGN --- */}
+          {/* --- AI METRIC CARD --- */}
           <div className="lg:col-span-4 flex justify-end">
             <div className={`w-full max-w-sm bg-[#0a0a0a] border border-[#B9935B] relative overflow-hidden shadow-[15px_15px_0px_0px_rgba(185,147,91,0.2)]`}>
                
                {/* 1. Card Header */}
                <div className={`flex justify-between items-center p-3 border-b border-[${gold}]/30 bg-[${gold}]/5`}>
                    <div className="flex items-center gap-2">
-                       <Activity size={14} className={`text-[${gold}]`} />
+                       <BrainCircuit size={14} className={`text-[${gold}]`} />
                        <span className={`text-[10px] font-bold text-[${gold}] tracking-widest uppercase`} style={{ fontFamily: fonts.mono }}>
-                           Live_Metric_Node_01
+                           Neural_Net_Link_01
                        </span>
                    </div>
                    <div className="flex items-center gap-2">
-                       <span className="text-[12px] text-gray-500 font-mono">REC</span>
-                       <div className="w-4 h-4 bg-red-500 rounded-full animate-pulse shadow-[0_0_8px_red]"></div>
+                       <span className="text-[12px] text-gray-500 font-mono">LIVE</span>
+                       <div className="w-2 h-2 bg-[#B9935B] rounded-full animate-pulse shadow-[0_0_8px_#B9935B]"></div>
                    </div>
                </div>
 
                {/* 2. Main Display Area */}
                <div className="relative p-8 overflow-hidden h-64 flex flex-col justify-center">
                    
-                   {/* Background Scrolling Data Stream */}
-                   <div className="absolute right-4 top-0 bottom-0 w-8 overflow-hidden opacity-70 pointer-events-none">
-                       <div className={`text-[18px] font-mono text-[${gold}] leading-tight animate-marquee-vertical`}>
-                           {Array(20).fill("011001 0xFF").map((t,i) => <div key={i}>{Math.random().toString(16).substring(2,8).toUpperCase()}</div>)}
+                   {/* Background Scrolling Data Stream (AI Prompts) */}
+                   <div className="absolute right-4 top-0 bottom-0 w-8 overflow-hidden opacity-40 pointer-events-none">
+                       <div className={`text-[10px] font-mono text-[${gold}] leading-tight animate-marquee-vertical`}>
+                           {Array(30).fill("MODEL_TRAIN_EPOCH").map((t,i) => <div key={i}>{t}_{Math.floor(Math.random() * 99)}</div>)}
                        </div>
                    </div>
 
                    <div className="relative z-10">
                        <div className="flex items-baseline gap-2">
                            <span className={`text-8xl font-black text-white tracking-tighter`} style={{ fontFamily: fonts.header }}>
-                               45X
+                               AI+
                            </span>
                        </div>
-                       <p className={`text-gray-400 text-sm mt-2 border-l-2 border-[${gold}] pl-3`} style={{ fontFamily: fonts.body }}>
-                           Average ROAS Uplift<br/>
-                           <span className="text-xs text-gray-300">Q1 Verified Data</span>
+                       <p className={`text-gray-400 text-sm mt-4 border-l-2 border-[${gold}] pl-3 leading-relaxed`} style={{ fontFamily: fonts.body }}>
+                           <strong className="text-white">The Unfair Advantage.</strong><br/>
+                           Our <span className={`text-[${gold}]`}>AI experts</span> utilize proprietary models to give you a leg up, outpacing manual competition.
                        </p>
                    </div>
 
@@ -210,7 +215,7 @@ function AboutSection() {
                {/* 3. Card Footer Ticker */}
                <div className={`bg-[#050505] border-t border-[${gold}]/30 py-2 overflow-hidden`}>
                    <div className={`flex gap-4 animate-marquee whitespace-nowrap text-[10px] font-bold text-[${gold}] uppercase tracking-widest`} style={{ fontFamily: fonts.mono }}>
-                       {Array(10).fill("SCALING // VELOCITY // PROFIT // ").map((t,i) => <span key={i}>{t}</span>)}
+                       {Array(10).fill("MACHINE LEARNING // HUMAN OVERSIGHT // SCALE // ").map((t,i) => <span key={i}>{t}</span>)}
                    </div>
                </div>
             </div>
@@ -233,6 +238,18 @@ function AboutSection() {
         ref={scrollSection}
         className="relative w-full h-auto md:h-screen bg-[#050505] overflow-hidden"
       >
+        
+        {/* --- STICKY SKIP BUTTON (Desktop Only) - UPDATED STYLE --- */}
+        <button 
+          onClick={handleSkip}
+          className={`hidden md:flex absolute bottom-8 right-8 z-[50] group items-center justify-center px-8 py-4 bg-[${gold}] overflow-hidden transition-transform active:scale-95 shadow-[0_0_20px_rgba(185,147,91,0.4)] border border-black`}
+        >
+          <span className="relative z-10 font-bold text-sm text-black uppercase tracking-widest flex items-center gap-3" style={{ fontFamily: fonts.mono }}>
+             <FastForward size={16} /> Bypass Sequence
+          </span>
+          <div className="absolute inset-0 bg-white translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out z-0"></div>
+        </button>
+
         {/* Track */}
         <div ref={scrollTrack} className="flex flex-col md:flex-row h-auto md:h-full w-full md:w-max relative z-10">
           
@@ -256,9 +273,11 @@ function AboutSection() {
                 <p className="text-gray-400 text-lg max-w-sm mb-12 font-light border-l border-white/20 pl-6 leading-relaxed" style={{ fontFamily: fonts.body }}>
                     Combat-tested infrastructure. We don&apos;t just run ads; we deploy a comprehensive assault on your market vertical.
                 </p>
+                
+                {/* Mobile Only Button */}
                 <button 
                   onClick={handleSkip}
-                  className={`group flex items-center gap-4 text-white uppercase tracking-widest text-xs font-bold hover:text-[${gold}] transition-all w-max`}
+                  className={`md:hidden group flex items-center gap-4 text-white uppercase tracking-widest text-xs font-bold hover:text-[${gold}] transition-all w-max`}
                   style={{ fontFamily: fonts.mono }}
                 >
                   <div className={`w-10 h-10 border border-white/20 flex items-center justify-center group-hover:border-[${gold}] group-hover:bg-[${gold}] group-hover:text-black transition-all`}>
@@ -287,16 +306,22 @@ function AboutSection() {
                       fill
                       className="object-cover  contrast-125 group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700"
                     />
-                   
+                    
                     <div className={`absolute bottom-2 right-2 text-7xl font-black text-transparent text-white opacity-90 z-20 group-hover:text-[${gold}] group-hover:[-webkit-text-stroke:0px] transition-all`} style={{ fontFamily: fonts.header }}>
                         {step.id}
                     </div>
                 </div>
                 <div className="flex-1 p-8 flex flex-col justify-between relative">
                     <div>
-                        <div className={`text-[${gold}] text-xs font-mono mb-2`}>Target: {step.tags[0]}</div>
+                        {/* UPDATED TARGET TEXT */}
+                        <div className={`text-[${gold}] text-sm font-mono mb-3 ml-2 tracking-wide font-bold`}>Target: {step.tags[0]}</div>
+                        
                         <h4 className="text-4xl md:text-5xl font-black text-white uppercase mb-4" style={{ fontFamily: fonts.header }}>{step.title}</h4>
-                        <p className="text-gray-400 text-sm font-light leading-relaxed border-l-2 border-white/20 pl-4 group-hover:border-[${gold}] transition-colors">{step.desc}</p>
+                        
+                        {/* UPDATED DESCRIPTION TEXT */}
+                        <p className="text-gray-300 text-[25px] font-light leading-relaxed border-l-2 border-white/20 pl-4 group-hover:border-[${gold}] transition-colors">
+                            {step.desc}
+                        </p>
                     </div>
                     <div className="border-t border-white/10 pt-4 flex justify-between items-center mt-6">
                         <div className="flex gap-2">
@@ -309,10 +334,10 @@ function AboutSection() {
             </div>
           ))}
 
-          {/* 3. FINALE SECTION (UPDATED - NO ROTATING SHAPES) */}
+          {/* 3. FINALE SECTION */}
           <div className={`w-full md:w-[100vw] min-h-[60vh] md:h-screen flex-shrink-0 relative flex flex-col items-center justify-center bg-[#050505] overflow-hidden border-l-2 border-[${gold}] perspective-[1000px]`}>
             
-            {/* 3D VELOCITY GRID - Floor and Ceiling */}
+            {/* 3D VELOCITY GRID */}
             <div className="absolute inset-0 z-0 opacity-40 pointer-events-none">
                  {/* Floor */}
                  <div className="absolute bottom-0 w-full h-[50%] bg-[linear-gradient(transparent_0%,rgba(185,147,91,0.2)_100%)]"></div>
@@ -337,7 +362,9 @@ function AboutSection() {
 
             {/* Content - Sitting in the center of the "Tunnel" */}
             <div className="relative z-10 text-center px-4">
-                <div className={`inline-flex items-center gap-4 mb-8 border border-[${gold}] px-8 py-3 bg-black shadow-[0_0_30px_rgba(185,147,91,0.2)]`}>
+                
+                {/* UPDATED AUTHORIZATION GRANTED BOX */}
+                <div className={`inline-flex items-center gap-4 mb-8 border border-[${gold}] px-8 py-3 bg-black shadow-[0_0_30px_rgba(185,147,91,0.4)] relative z-20`}>
                     <Lock size={14} className={`text-[${gold}]`} />
                     <span className={`text-[${gold}] font-bold text-xs tracking-[0.3em] uppercase`} style={{ fontFamily: fonts.mono }}>
                         Authorization Granted

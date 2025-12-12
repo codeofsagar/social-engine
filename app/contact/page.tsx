@@ -121,7 +121,7 @@ function ContactSection() {
                 <h2 
                   className="w-full text-[8vw] lg:text-[5vw] leading-[0.9] text-black uppercase mb-8 mix-blend-darken break-words hyphens-auto"
                   style={{ 
-                    fontFamily: '"Zalando Sans", sans-serif', 
+                    fontFamily: "'Kanit', sans-serif",
                     fontWeight: 900 
                   }}
                 >
@@ -173,7 +173,7 @@ function ContactSection() {
                             <h3 
                               className="text-3xl md:text-4xl uppercase leading-none"
                               style={{ 
-                                fontFamily: '"Zalando Sans", sans-serif', 
+                                fontFamily: "'Kanit', sans-serif",
                                 fontWeight: 900 
                               }}
                             >
@@ -221,7 +221,7 @@ function ContactSection() {
                         </span>
                         <span 
                           className="font-bold underline tracking-wider text-sm"
-                          style={{ fontFamily: '"Zalando Sans", sans-serif', fontWeight: 900 }}
+                          style={{ fontFamily: "'Kanit', sans-serif",fontWeight: 900 }}
                         >
                           BOOK NOW
                         </span>
@@ -242,7 +242,7 @@ function ContactSection() {
                       key={i} 
                       className="flex gap-8 text-2xl uppercase tracking-wider"
                       style={{ 
-                        fontFamily: '"Zalando Sans", sans-serif', 
+                        fontFamily: "'Kanit', sans-serif",
                         fontWeight: 900 
                       }}
                     >
@@ -279,7 +279,7 @@ function ContactSection() {
              <h4 
                className="text-xl uppercase"
                style={{ 
-                  fontFamily: '"Zalando Sans", sans-serif', 
+                  fontFamily: "'Kanit', sans-serif",
                   fontWeight: 900 
                }}
              >

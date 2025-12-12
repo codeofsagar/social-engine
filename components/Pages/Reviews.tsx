@@ -120,11 +120,7 @@ function Reviews() {
       style={{ fontFamily: '"Inter", sans-serif' }}
     >
       {/* --- Background Elements --- */}
-      
-      {/* 1. Noise Texture */}
-      <div className="absolute inset-0 pointer-events-none opacity-[0.10] z-[0] mix-blend-multiply" 
-           style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")` }}>
-      </div>
+     
 
       {/* 2. Background Image */}
       <div 
@@ -137,12 +133,12 @@ function Reviews() {
         }}
       ></div>
 
-      {/* 3. Typography Watermark (Zalando Sans) */}
+      
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full text-center select-none pointer-events-none opacity-[0.03] z-[2]">
         <h1 
           className="text-[20vw] leading-none text-black"
           style={{ 
-            fontFamily: '"Zalando Sans", sans-serif', 
+            fontFamily:"'Kanit', sans-serif",
             fontWeight: 900 
           }}
         >
@@ -248,11 +244,11 @@ function Reviews() {
                             </h3>
                             
                             <div className="flex flex-col border-l-2 pl-6" style={{ borderColor: COLORS.gold }}>
-                                {/* Name (Zalando Sans - Black 900) */}
+                              
                                 <span 
                                   className="text-2xl md:text-3xl uppercase tracking-wide leading-none mb-2"
                                   style={{ 
-                                    fontFamily: '"Zalando Sans", sans-serif', 
+                                    fontFamily:"'Kanit', sans-serif", 
                                     fontWeight: 900,
                                     color: COLORS.black
                                   }}
@@ -282,11 +278,11 @@ function Reviews() {
             <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-black/10">
                 {STATS.map((stat, i) => (
                     <div key={i} className="stat-entry pt-6 lg:pt-8 pl-4 lg:pl-8">
-                        {/* Stat Value (Zalando Sans - Black 900) - Gold */}
+                       
                         <div 
                           className="text-3xl lg:text-5xl mb-2"
                           style={{ 
-                            fontFamily: '"Zalando Sans", sans-serif', 
+                            fontFamily:"'Kanit', sans-serif", 
                             fontWeight: 900,
                             color: COLORS.gold
                           }}

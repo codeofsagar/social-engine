@@ -43,10 +43,8 @@ function Footer() {
     >
       {/* --- Background Elements --- */}
       
-      {/* 1. Noise Texture */}
-      <div className="absolute inset-0 pointer-events-none opacity-[0.05] z-[0] mix-blend-overlay" 
-           style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")` }}>
-      </div>
+     
+     
 
       {/* 2. Background Image */}
       <div 
@@ -75,7 +73,7 @@ function Footer() {
             <h2 
               className="text-[clamp(2.5rem,7vw,6rem)] leading-[0.9] uppercase"
               style={{ 
-                fontFamily: '"Zalando Sans", sans-serif', 
+                fontFamily: "'Kanit', sans-serif",
                 fontWeight: 900 
               }}
             >
@@ -89,7 +87,7 @@ function Footer() {
                 href="/contact"
                 className="flex items-center gap-4 text-xl md:text-2xl lg:text-3xl uppercase border-b border-[#B9935B]/50 pb-2 group-hover:border-[#B9935B] group-hover:text-[#B9935B] transition-all duration-300"
                 style={{ 
-                  fontFamily: '"Zalando Sans", sans-serif', 
+                  fontFamily: "'Kanit', sans-serif",
                   fontWeight: 900 
                 }}
              >
@@ -111,7 +109,7 @@ function Footer() {
             <div className="py-10 lg:pr-12">
                 <div 
                   className="w-10 h-10 md:w-12 md:h-12 mb-6 rounded-full flex items-center justify-center text-black font-bold text-lg md:text-xl"
-                  style={{ backgroundColor: COLORS.gold, fontFamily: '"Zalando Sans", sans-serif', fontWeight: 900 }}
+                  style={{ backgroundColor: COLORS.gold, fontFamily: "'Kanit', sans-serif",fontWeight: 900 }}
                 >
                     AP
                 </div>
@@ -205,7 +203,7 @@ function Footer() {
             <h1 
               className="text-[13vw] uppercase text-[#050505] mix-blend-multiply leading-none"
               style={{ 
-                fontFamily: '"Zalando Sans", sans-serif', 
+                fontFamily: "'Kanit', sans-serif",
                 fontWeight: 900 
               }}
             >

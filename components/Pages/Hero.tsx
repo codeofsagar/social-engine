@@ -1,129 +1,21 @@
 "use client";
-import { useRef, useEffect, useState, Suspense } from "react";
+import { useRef, useEffect, useState } from "react";
 import Link from "next/link";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-import { ArrowRight, PlayCircle, Terminal } from "lucide-react";
-
-// --- 3D IMPORTS ---
-import { Canvas, useFrame } from "@react-three/fiber";
-import { useGLTF, Float, Environment } from "@react-three/drei";
-import * as THREE from "three";
-
-// --- 1. MOBILE CHECK HOOK ---
-function useIsMobile() {
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
-    checkMobile();
-    window.addEventListener("resize", checkMobile);
-    return () => window.removeEventListener("resize", checkMobile);
-  }, []);
-
-  return isMobile;
-}
-
-// --- INDIVIDUAL 3D MODEL COMPONENT ---
-function FloatingModel({ url, position, rotation, scale = 0.6, mousePos }: any) {
-  const meshRef = useRef<THREE.Group>(null);
-  const { scene } = useGLTF(url) as any;
-
-  useFrame((state) => {
-    if (!meshRef.current) return;
-    
-    // --- RESTRICTED MOVEMENT LOGIC ---
-    const targetX = rotation[0] + (mousePos.y * 0.1); 
-    const targetY = rotation[1] + (mousePos.x * 0.1);
-
-    meshRef.current.rotation.x = THREE.MathUtils.lerp(meshRef.current.rotation.x, targetX, 0.05);
-    meshRef.current.rotation.y = THREE.MathUtils.lerp(meshRef.current.rotation.y, targetY, 0.05);
-  });
-
-  return (
-    <Float 
-      speed={2} 
-      rotationIntensity={0} 
-      floatIntensity={1}    
-      floatingRange={[-0.1, 0.1]}
-    >
-      <group ref={meshRef} position={position} scale={scale} rotation={rotation}>
-        <primitive object={scene} />
-      </group>
-    </Float>
-  );
-}
-
-// --- THE 3D CANVAS LAYER ---
-const FloatingIconsCanvas = ({ mousePos, isMobile }: { mousePos: { x: number, y: number }, isMobile: boolean }) => {
-  return (
-    <div className="absolute inset-0 z-10 w-full h-full pointer-events-none">
-      <Canvas camera={{ position: [0, 0, 15], fov: 35 }} gl={{ alpha: true }}>
-        <ambientLight intensity={1.5} />
-        <spotLight position={[10, 10, 10]} angle={0.5} penumbra={1} intensity={2} color="#B9935B" />
-        <spotLight position={[-10, -10, 10]} angle={0.5} penumbra={1} intensity={1} color="#ffffff" />
-        <Environment preset="city" />
-
-        <Suspense fallback={null}>
-          {/* 1. Top Left (Instagram) */}
-          <FloatingModel 
-            url="/models/insta.glb" 
-            position={isMobile ? [-1.8, 2.9, 0] : [-5, 2.5, 0]} 
-            rotation={[0, -Math.PI / 2, 0]} 
-            scale={isMobile ? 0.4 : 0.6} 
-            mousePos={mousePos}
-          />
-
-          {/* 2. Top Right (Youtube) */}
-          <FloatingModel 
-            url="/models/youtube.glb" 
-            position={isMobile ? [1.8, 3.5, -2] : [5, 3, -2]} 
-            rotation={[0, -Math.PI / 2, 0]} 
-            scale={isMobile ? 0.4 : 0.6} 
-            mousePos={mousePos}
-          />
-
-          {/* 3. Bottom Left (TikTok) */}
-          <FloatingModel 
-            url="/models/tiktok.glb" 
-            position={isMobile ? [-1, -3.5, 2] : [-4, -3, 2]} 
-            rotation={[0, 0, 0]} 
-            scale={isMobile ? 0.36 : 0.5} 
-            mousePos={mousePos}
-          />
-
-          {/* 4. Bottom Right (Facebook) */}
-          <FloatingModel 
-            url="/models/fb.glb" 
-            position={isMobile ? [1.5,-3.8, 0] : [5, -2, 0]} 
-            rotation={[0, -Math.PI / 2, 0]} 
-            scale={isMobile ? 0.45 : 0.6} 
-            mousePos={mousePos}
-          />
-        </Suspense>
-      </Canvas>
-    </div>
-  );
-};
-
+import { ArrowRight, Globe, Wifi, Cpu, Activity, Lock, Zap } from "lucide-react";
 
 function HeroSection() {
-  const container = useRef(null);
+  const container = useRef<HTMLElement>(null);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
-  
-  // --- USE THE HOOK ---
-  const isMobile = useIsMobile();
 
+  // Mouse Move Effect for Spotlight
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
-      const { innerWidth, innerHeight } = window;
-      const x = (e.clientX / innerWidth) * 2 - 1;
-      const y = (e.clientY / innerHeight) * 2 - 1;
+      const x = (e.clientX / window.innerWidth) * 100;
+      const y = (e.clientY / window.innerHeight) * 100;
       setMousePos({ x, y });
     };
-
     window.addEventListener("mousemove", handleMouseMove);
     return () => window.removeEventListener("mousemove", handleMouseMove);
   }, []);
@@ -131,12 +23,12 @@ function HeroSection() {
   useGSAP(() => {
     const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
 
-    // 1. Badge Reveal
-    tl.from(".hero-badge", {
-      y: -20,
-      opacity: 0,
-      duration: 1,
-      delay: 0.2,
+    // 1. HUD Elements Entrance
+    tl.from(".hud-item", {
+        opacity: 0,
+        scale: 0.8,
+        duration: 0.8,
+        stagger: 0.1
     })
     // 2. Main Title Stagger
     .from(".hero-line", {
@@ -157,17 +49,25 @@ function HeroSection() {
 
   }, { scope: container });
 
+  const fonts = {
+    header: "'Kanit', sans-serif",
+    mono: "'IBM Plex Mono', monospace",
+    body: "'Inter', sans-serif",
+  };
+
   return (
     <section
       ref={container}
-      className="relative min-h-[100vh] w-full flex items-center justify-center overflow-hidden bg-[#050505]"
+      className="relative min-h-[100vh] w-full flex items-center justify-center overflow-hidden bg-[#050505] cursor-crosshair"
     >
       {/* =========================================
-          BACKGROUND LAYER (VIDEO)
+          1. BACKGROUND LAYERS
       ========================================= */}
-      <div className="absolute inset-0 z-0 opacity-40">
+      
+      {/* A. Video Background */}
+      <div className="absolute inset-0 z-0 opacity-60 mix-blend-screen">
         <video
-          className="w-full h-full object-cover "
+          className="w-full h-full object-cover  "
           autoPlay
           loop
           muted
@@ -175,101 +75,155 @@ function HeroSection() {
         >
           <source src="/images/herovideo.mp4" type="video/mp4" />
         </video>
-        {/* Overlay Gradient to make text readable */}
-        <div className="absolute inset-0 "></div>
       </div>
 
-      {/* =========================================
-          3D ICONS LAYER
-      ========================================= */}
-      <FloatingIconsCanvas mousePos={mousePos} isMobile={isMobile} />
+      {/* B. Dynamic Grid Spotlight (Follows Mouse) */}
+      <div 
+        className="absolute inset-0 z-1 pointer-events-none opacity-40"
+        style={{
+            background: `radial-gradient(600px circle at ${mousePos.x}% ${mousePos.y}%, rgba(185, 147, 91, 0.15), transparent 40%)`
+        }}
+      ></div>
+      
+      {/* C. Technical Grid Lines (Revealed by Spotlight) */}
+      <div 
+        className="absolute inset-0 z-1 pointer-events-none opacity-[0.07]"
+        style={{
+            backgroundImage: `linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px)`,
+            backgroundSize: '40px 40px',
+            maskImage: `radial-gradient(600px circle at ${mousePos.x}% ${mousePos.y}%, black, transparent)`
+        }}
+      ></div>
+
+     
 
       {/* =========================================
-          CONTENT LAYER
+          2. HUD / SYSTEM OVERLAYS (Visual Furniture)
+      ========================================= */}
+      
+     
+
+      {/* CORNER 3: Bottom Left (Encryption/Ping) */}
+      <div className="hud-item absolute bottom-12 left-6 md:bottom-16 md:left-12 hidden md:flex flex-col gap-2 z-30 opacity-80">
+         <div className="flex items-center gap-3 text-white" style={{ fontFamily: fonts.mono }}>
+             <Zap size={18} className="text-[#B9935B]" />
+             <span className="text-xs md:text-sm font-bold tracking-widest">PWR_LEVEL: OPTIMAL</span>
+         </div>
+         <div className="h-[1px] w-32 bg-white/20"></div>
+         <span className="text-xs text-gray-400 font-mono">PING: 14ms // P2P_READY</span>
+      </div>
+
+      {/* CORNER 4: Bottom Right (Global Reach) */}
+      <div className="hud-item absolute bottom-12 right-6 md:bottom-16 md:right-12 hidden md:flex items-center gap-3 z-30 opacity-80">
+         <div className="flex flex-col items-end mr-2">
+            <span className="text-xs md:text-sm text-[#B9935B] font-bold tracking-widest font-mono">GLOBAL_REACH</span>
+            <span className="text-[10px] text-gray-500 font-mono">NODES_CONNECTED</span>
+         </div>
+         <Globe size={32} className="text-white animate-[spin_10s_linear_infinite] opacity-50" strokeWidth={1} />
+      </div>
+
+      {/* Decorative Corner Brackets (Visual Framing) */}
+      <div className="absolute top-12 left-4 md:left-8 w-6 h-6 border-l-2 border-t-2 border-[#B9935B]/40 z-20 hidden md:block"></div>
+      <div className="absolute top-12 right-4 md:right-8 w-6 h-6 border-r-2 border-t-2 border-[#B9935B]/40 z-20 hidden md:block"></div>
+      <div className="absolute bottom-12 left-4 md:left-8 w-6 h-6 border-l-2 border-b-2 border-[#B9935B]/40 z-20 hidden md:block"></div>
+      <div className="absolute bottom-12 right-4 md:right-8 w-6 h-6 border-r-2 border-b-2 border-[#B9935B]/40 z-20 hidden md:block"></div>
+
+
+      {/* =========================================
+          3. MAIN CONTENT LAYER
       ========================================= */}
       <div className="container mx-auto px-4 md:px-6 relative z-20 flex flex-col items-center text-center">
         
-        {/* Badge / Console Text (Using IBM Plex Mono) */}
-        <div 
-            className="hero-badge mb-6 md:mb-8 inline-flex items-center gap-2 px-3 py-1 bg-white/5 border border-white/10 backdrop-blur-sm"
-        >
-             <div className="w-1.5 h-1.5 rounded-full bg-[#B9935B] animate-pulse"/>
-             <span 
-                className="text-[10px] md:text-xs text-[#B9935B] uppercase tracking-[0.2em]" 
-                style={{ fontFamily: 'IBM Plex Mono' }}
-             >
+        {/* Badge / Console Text */}
+        <div className="hero-badge mb-8 inline-flex items-center gap-3 px-4 py-1.5 bg-black/40 border border-[#B9935B]/30 backdrop-blur-md rounded-full">
+             <div className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#B9935B] opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-[#B9935B]"></span>
+             </div>
+             <span className="text-[10px] md:text-xs text-white uppercase tracking-[0.2em] font-medium" style={{ fontFamily: fonts.mono }}>
                 Agency System Online
              </span>
         </div>
 
-        {/* Cinematic Headline - Zalando Sans Black 900 */}
-        <div className="max-w-5xl mx-auto w-full">
+        {/* Cinematic Headline */}
+        <div className="max-w-6xl mx-auto w-full mb-10">
             <h1 
-              className="flex flex-col items-center justify-center tracking-tighter mb-8 md:mb-10"
-              style={{ fontFamily: "Zalando Sans", fontWeight: 900 }}
+              className="flex flex-col items-center justify-center tracking-tighter leading-[0.9]"
+              style={{ fontFamily: fonts.header, fontWeight: 900 }}
             >
-              {/* LINE 1: WHITE */}
+              {/* LINE 1 */}
               <div className="overflow-hidden">
-                <span className="hero-line block text-white text-[7vw] md:text-[4vw] drop-shadow-2xl">
+                <span className="hero-line block text-white text-[9vw] md:text-[5.5vw] mix-blend-difference">
                   STOP WASTING
                 </span>
               </div>
               
               {/* LINE 2: GOLD & GLOWING */}
-              <div className="overflow-hidden">
-                  <span className="hero-line block text-[#B9935B] text-[7vw] md:text-[4vw] drop-shadow-[0_0_35px_rgba(185,147,91,0.4)]">
+              <div className="overflow-hidden relative z-10">
+                  <span className="hero-line block text-[#B9935B] text-[9vw] md:text-[5.5vw] drop-shadow-[0_0_50px_rgba(185,147,91,0.5)]">
                     MONEY ON
                   </span>
+                  {/* Subtle line strike-through effect or underline decoration */}
+                  <div className="hero-fade-up h-[2px] w-[60%] bg-[#B9935B] mx-auto mt-2 opacity-50 shadow-[0_0_10px_#B9935B]"></div>
               </div>
 
-              {/* LINE 3: HOLLOW / STROKED */}
+              {/* LINE 3 */}
               <div className="overflow-hidden">
-                  <span 
-                    className="hero-line block text-white text-[7vw] md:text-[4vw] "
-                  >
+                  <span className="hero-line block text-transparent text-[9vw] md:text-[5.5vw] text-white hover:text-white transition-colors duration-500">
                     BAD MARKETING
                   </span>
               </div>
             </h1>
         </div>
 
-        {/* Description - Inter (Plain Text) */}
+        {/* Description */}
         <p 
-            className="hero-fade-up text-sm md:text-base text-gray-400 max-w-[80%] md:max-w-xl leading-relaxed mb-10 border-l-2 border-[#B9935B] pl-4 md:pl-6 text-left md:text-center md:border-l-0 md:border-t-2 md:pt-6"
-            style={{ fontFamily: 'Inter' }}
+            className="hero-fade-up text-sm md:text-lg text-gray-400 max-w-[90%] md:max-w-2xl leading-relaxed mb-12 border-l-2 border-[#B9935B] pl-6 md:pl-0 md:border-l-0 md:border-t border-white/10 md:pt-8"
+            style={{ fontFamily: fonts.body }}
         >
-          We combine cinematic visuals with data-driven strategies to convert your ad spend into measurable profit.
+          We combine cinematic visuals with data-driven strategies to convert your ad spend into measurable profit, <span className="text-white font-medium shadow-[0_0_15px_rgba(255,255,255,0.2)] bg-white/5 px-1">using state-of-the-art AI tools</span> to enhance every step of the process.
         </p>
 
-        {/* Magnetic Button Group */}
-        <div className="hero-fade-up flex flex-col md:flex-row gap-6 items-center">
-            
-            {/* Main CTA - Inter, Uppercase, No Rounded Corners */}
+        {/* Main CTA - Enhanced Animation */}
+        <div className="hero-fade-up flex flex-col items-center gap-4">
             <Link 
               href="/contact"
-              className="group relative inline-flex items-center justify-center px-8 py-4 md:px-10 md:py-5 bg-[#B9935B] text-black overflow-hidden transition-all duration-300 hover:bg-white rounded-none"
+              className="group relative inline-flex items-center justify-center px-12 py-6 bg-[#B9935B] text-black overflow-hidden hover:scale-105 hover:shadow-[0_0_50px_rgba(185,147,91,0.6)] shadow-[0_0_30px_rgba(185,147,91,0.3)] transition-all duration-300"
             >
-               <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-in-out" />
+               {/* Scanline Effect on Button */}
+               <div className="absolute inset-0 bg-[linear-gradient(rgba(0,0,0,0.1)_1px,transparent_1px)] bg-[size:100%_4px] pointer-events-none opacity-20"></div>
+
+               {/* Shimmer Effect */}
+               <div className="absolute inset-0 -translate-x-full group-hover:animate-none animate-[shimmer_3s_infinite] bg-gradient-to-r from-transparent via-white/60 to-transparent z-10" />
+               
+               {/* Hover Fill Effect */}
+               <div className="absolute inset-0 bg-white translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-in-out z-0" />
+
                <span 
-                 className="relative z-10 font-bold text-xs md:text-sm uppercase tracking-widest"
-                 style={{ fontFamily: "Inter" }} 
+                 className="relative z-20 font-black text-sm md:text-base uppercase tracking-[0.2em] flex items-center gap-4"
+                 style={{ fontFamily: fonts.mono }} 
                >
-                 Start Growth
+                 Initiate Launch
+                 <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-2" />
                </span>
-               <ArrowRight className="relative z-10 w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" />
             </Link>
 
-            {/* Secondary CTA - Inter, Uppercase */}
-            <button 
-                className="group flex items-center gap-3 text-white/70 hover:text-[#B9935B] transition-colors uppercase text-[10px] md:text-xs font-bold tracking-widest rounded-none"
-                style={{ fontFamily: 'Inter' }}
-            >
-                <PlayCircle className="w-8 h-8 md:w-10 md:h-10 stroke-1 group-hover:scale-110 transition-transform" />
-                <span className="text-left">Watch <br/> Showreel</span>
-            </button>
+            {/* Tiny text under button */}
+            <div className="flex items-center gap-2 opacity-50 text-[10px] font-mono text-[#B9935B]">
+                <Activity size={10} />
+                <span>SYSTEM_READY</span>
+            </div>
         </div>
 
       </div>
+
+      {/* Tailwind Custom Keyframes for Shimmer */}
+      <style jsx global>{`
+        @keyframes shimmer {
+          0% { transform: translateX(-150%) skewX(-20deg); }
+          50%, 100% { transform: translateX(150%) skewX(-20deg); }
+        }
+      `}</style>
     </section>
   );
 }
