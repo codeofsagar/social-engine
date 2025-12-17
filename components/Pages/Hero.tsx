@@ -97,9 +97,7 @@ function HeroSection() {
 
      
 
-      {/* =========================================
-          2. HUD / SYSTEM OVERLAYS (Visual Furniture)
-      ========================================= */}
+     
       
      
 
@@ -132,10 +130,10 @@ function HeroSection() {
       {/* =========================================
           3. MAIN CONTENT LAYER
       ========================================= */}
-      <div className="container mx-auto px-4 md:px-6 relative z-20 flex flex-col items-center text-center">
+      <div className="container mx-auto px-4 md:px-6 relative z-20 flex flex-col items-center text-center mt-16">
         
         {/* Badge / Console Text */}
-        <div className="hero-badge mb-8 inline-flex items-center gap-3 px-4 py-1.5 bg-black/40 border border-[#B9935B]/30 backdrop-blur-md rounded-full">
+        <div className="hero-badge mb-1 inline-flex items-center gap-3 px-4 py-1.5 bg-black/40 border border-[#B9935B]/30 backdrop-blur-md rounded-full">
              <div className="relative flex h-2 w-2">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#B9935B] opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-[#B9935B]"></span>
@@ -146,21 +144,21 @@ function HeroSection() {
         </div>
 
         {/* Cinematic Headline */}
-        <div className="max-w-6xl mx-auto w-full mb-10">
+        <div className="max-w-6xl mx-auto w-full ">
             <h1 
               className="flex flex-col items-center justify-center tracking-tighter leading-[0.9]"
               style={{ fontFamily: fonts.header, fontWeight: 900 }}
             >
               {/* LINE 1 */}
               <div className="overflow-hidden">
-                <span className="hero-line block text-white text-[9vw] md:text-[5.5vw] mix-blend-difference">
+                <span className="hero-line block text-white text-[11vw] lg:text-[7vw] mix-blend-difference">
                   STOP WASTING
                 </span>
               </div>
               
               {/* LINE 2: GOLD & GLOWING */}
               <div className="overflow-hidden relative z-10">
-                  <span className="hero-line block text-[#B9935B] text-[9vw] md:text-[5.5vw] drop-shadow-[0_0_50px_rgba(185,147,91,0.5)]">
+                  <span className="hero-line block text-[#B9935B] text-[11vw] lg:text-[7vw] drop-shadow-[0_0_50px_rgba(185,147,91,0.5)]">
                     MONEY ON
                   </span>
                   {/* Subtle line strike-through effect or underline decoration */}
@@ -169,7 +167,7 @@ function HeroSection() {
 
               {/* LINE 3 */}
               <div className="overflow-hidden">
-                  <span className="hero-line block text-transparent text-[9vw] md:text-[5.5vw] text-white hover:text-white transition-colors duration-500">
+                  <span className="hero-line block text-transparent text-[11vw] lg:text-[7vw] text-white hover:text-white transition-colors duration-500">
                     BAD MARKETING
                   </span>
               </div>

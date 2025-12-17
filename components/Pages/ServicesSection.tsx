@@ -139,7 +139,7 @@ function ServicesSection() {
                     <div className="overflow-hidden"><div className="reveal-text">Scale</div></div>
                     <div className="overflow-hidden flex items-center gap-4">
                         <div className="reveal-text  text-[#B9935B]">Now</div>
-                        <ArrowRight className="w-[8vw] h-[8vw] text-white -rotate-45 hidden lg:block" strokeWidth={3} />
+                        <ArrowRight className="w-[8vw] h-[8vw] text-white -rotate-95 hidden lg:block" strokeWidth={3} />
                     </div>
                 </h2>
                 </div>

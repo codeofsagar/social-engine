@@ -5,6 +5,7 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { IconArrowUpRight } from "@tabler/icons-react";
+import Image from "next/image";
 
 const COLORS = {
   gold: "#B9935B",
@@ -41,25 +42,16 @@ function Footer() {
       className="bg-[#050505] text-[#FFFBF6] pt-16 md:pt-24 overflow-hidden relative"
       style={{ fontFamily: '"Inter", sans-serif' }}
     >
-      {/* --- Background Elements --- */}
+     
       
      
      
 
-      {/* 2. Background Image */}
-      <div 
-        className="absolute inset-0 z-[0] opacity-[0.15] mix-blend-screen pointer-events-none"
-        style={{
-            backgroundImage: `url('https://images.unsplash.com/photo-1485627941502-d2e6429fa8af?q=80&w=2072&auto=format&fit=crop')`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            filter: 'grayscale(100%) contrast(120%)' 
-        }}
-      ></div>
+      
 
       {/* 1. Main Call to Action Area */}
-      <div className="container mx-auto px-4 md:px-6 lg:px-12 mb-16 md:mb-24 relative z-10">
-        <div className="flex flex-col lg:flex-row justify-between items-start lg:items-end gap-8 lg:gap-12">
+      <div className="container max-w-8xl mx-auto px-4 md:px-6 lg:px-12 mb-8 md:mb-16 relative z-10">
+        <div className="flex flex-col lg:flex-row justify-between items-start lg:items-end gap-4 lg:gap-6">
           <div>
             <p 
               className="text-xs md:text-sm uppercase tracking-widest mb-4"
@@ -71,7 +63,7 @@ function Footer() {
               Next Steps
             </p>
             <h2 
-              className="text-[clamp(2.5rem,7vw,6rem)] leading-[0.9] uppercase"
+              className="text-[clamp(3.5rem,8vw,8rem)] leading-[0.9] uppercase"
               style={{ 
                 fontFamily: "'Kanit', sans-serif",
                 fontWeight: 900 
@@ -82,7 +74,7 @@ function Footer() {
             </h2>
           </div>
           
-          <div className="group relative mt-4 lg:mt-0">
+          <div className="group relative mt-0 lg:mt-0">
              <Link 
                 href="/contact"
                 className="flex items-center gap-4 text-xl md:text-2xl lg:text-3xl uppercase border-b border-[#B9935B]/50 pb-2 group-hover:border-[#B9935B] group-hover:text-[#B9935B] transition-all duration-300"
@@ -107,11 +99,16 @@ function Footer() {
             
             {/* Col 1: Description */}
             <div className="py-10 lg:pr-12">
-                <div 
-                  className="w-10 h-10 md:w-12 md:h-12 mb-6 rounded-full flex items-center justify-center text-black font-bold text-lg md:text-xl"
-                  style={{ backgroundColor: COLORS.gold, fontFamily: "'Kanit', sans-serif",fontWeight: 900 }}
-                >
-                    AP
+                <div className="mb-6">
+                  <div className="relative w-16 h-16 md:w-40 md:h-40">
+                    <Image
+                      src="/images/foot.png"
+                      alt="AP Agency Logo"
+                      fill
+                      className="object-contain"
+                      sizes="(max-width: 1024px) 74px, 90px"
+                    />
+                  </div>
                 </div>
                 <p className="text-gray-400 leading-relaxed text-sm font-light">
                     We create high-performance ad strategies that capture attention, target the right audience, and turn clicks into customers.
@@ -130,7 +127,7 @@ function Footer() {
                   Sitemap
                 </h4>
                 <ul className="space-y-4">
-                    {['Home', 'Services', 'Packages', 'Reviews'].map((item) => (
+                    {['Home',"About", 'Services', 'Packages', 'Reviews'].map((item) => (
                         <li key={item}>
                             <Link href={`#${item.toLowerCase()}`} className="text-base md:text-lg hover:text-[#B9935B] transition-colors inline-block font-medium">
                                 {item}
@@ -201,7 +198,7 @@ function Footer() {
       >
         <div className="footer-brand-text flex justify-center w-full pt-4 pb-2">
             <h1 
-              className="text-[13vw] uppercase text-[#050505] mix-blend-multiply leading-none"
+              className="text-[17vw] uppercase text-[#050505] mix-blend-multiply leading-none"
               style={{ 
                 fontFamily: "'Kanit', sans-serif",
                 fontWeight: 900 
