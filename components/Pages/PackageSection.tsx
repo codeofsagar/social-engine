@@ -262,7 +262,7 @@ function PackageSection() {
                                 <Link 
                                     href="/contact" 
                                     className="w-full bg-[#B9935B] text-black h-16 flex items-center justify-center gap-4 font-black uppercase tracking-widest hover:bg-white transition-all duration-300 group/btn border-2 border-[#B9935B] hover:border-white"
-                                    style={{ fontFamily: fonts.header }}
+                                    style={{ fontFamily: fonts.body }}
                                 >
                                     Start Protocol
                                     <ArrowRight className="group-hover/btn:translate-x-1 transition-transform"/>

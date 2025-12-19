@@ -4,6 +4,8 @@ import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import gsap from "gsap";
 import Link from "next/link";
+import Image from "next/image";
+
 import { ArrowRight, Zap, BarChart3, CornerDownRight, Plus } from "lucide-react";       
 
 gsap.registerPlugin(ScrollTrigger);
@@ -139,7 +141,14 @@ function ServicesSection() {
                     <div className="overflow-hidden"><div className="reveal-text">Scale</div></div>
                     <div className="overflow-hidden flex items-center gap-4">
                         <div className="reveal-text  text-[#B9935B]">Now</div>
-                        <ArrowRight className="w-[8vw] h-[8vw] text-white -rotate-95 hidden lg:block" strokeWidth={3} />
+                       <Image
+  src="/images/arr.svg"
+  alt="Arrow"
+  width={110}
+  height={110}
+  className="w-[7vw] h-[7vw] -rotate-95 hidden lg:block"
+/>
+
                     </div>
                 </h2>
                 </div>
@@ -267,7 +276,7 @@ function ServicesSection() {
                     href="/contact"
                     className="inline-flex items-center justify-between w-full max-w-sm gap-6 px-8 py-6 border-2 border-black bg-white group-hover:bg-black transition-all duration-300 shadow-[8px_8px_0px_#000] group-hover:shadow-[4px_4px_0px_#fff] group-hover:translate-x-1 group-hover:translate-y-1"
                 >
-                    <span className="text-xl font-bold uppercase tracking-widest text-black group-hover:text-white" style={{ fontFamily: fonts.header }}>
+                    <span className="md:text-xl text-lg font-bold uppercase tracking-widest text-black group-hover:text-white" style={{ fontFamily: fonts.body }}>
                         Initiate Launch
                     </span>
                     <ArrowRight className="text-black group-hover:text-[#B9935B]" size={24} />

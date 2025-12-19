@@ -161,6 +161,16 @@ function Footer() {
                         <p className="text-xs text-gray-500 mb-1" style={{ fontFamily: '"IBM Plex Mono", monospace' }}>HQ</p>
                         <p className="text-base md:text-lg text-gray-300 font-medium">Richmond Hill, ON<br/>Canada</p>
                     </li>
+                    <li>
+                        <p className="text-xs text-gray-500 mb-1" style={{ fontFamily: '"IBM Plex Mono", monospace' }}>Instagram</p>
+                       <a 
+                      href="https://www.instagram.com/ap.digitalagency/" 
+                      target="_blank" 
+                      className="group flex items-center gap-2 text-base md:text-lg hover:text-[#B9935B] transition-colors font-semibold uppercase"
+                    >
+                        Ap Agency<IconArrowUpRight className="w-4 h-4 opacity-50 group-hover:opacity-100 transition-opacity" />
+                    </a>
+                    </li>
                 </ul>
             </div>
 
