@@ -72,7 +72,7 @@ function ContactSection() {
     <section
       id="contact"
       ref={containerRef}
-      className="bg-[#FFFBF6] text-black min-h-screen relative overflow-hidden flex flex-col pt-32 lg:pt-48"
+      className="bg-[#FFFBF6] text-black min-h-screen relative overflow-hidden flex flex-col pt-32 lg:pt-48 dark-bg"
       style={{ fontFamily: '"Inter", sans-serif' }}
     >
       {/* --- Background Elements --- */}
@@ -184,7 +184,7 @@ function ContactSection() {
                           className="w-12 h-12 md:w-14 md:h-14 rounded-full border border-black group-hover:border-[#B9935B] flex items-center justify-center transition-colors text-white group-hover:bg-transparent"
                           style={{ backgroundColor: COLORS.gold }}
                         >
-                            <IconArrowUpRight className="w-6 h-6 md:w-8 md:h-8 group-hover:text-[#B9935B] transition-transform duration-500 group-hover:rotate-45" />
+                            <IconArrowUpRight className="w-6 h-6 md:w-8 md:h-8 group-hover:text-black transition-transform duration-500 group-hover:rotate-45" />
                         </div>
                     </div>
 

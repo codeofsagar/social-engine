@@ -106,7 +106,7 @@ export function AboutDemo() {
 
               <span 
                 className="relative z-20 text-sm uppercase tracking-widest flex items-center gap-3"
-                style={{ fontFamily: fonts.body, fontWeight: 600 }} 
+                style={{ fontFamily: fonts.body, fontWeight: 700 }} 
               >
                 Read more
                 <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1.5" />

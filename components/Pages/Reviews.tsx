@@ -116,7 +116,7 @@ function Reviews() {
       ref={containerRef}
       id="reviews"
       // UPDATED: Reduced vertical padding on mobile (py-12 vs py-24)
-      className="bg-[#FFFBF6] text-black min-h-screen flex flex-col justify-center relative overflow-hidden py-12 lg:py-24"
+      className="bg-[#FFFBF6] text-black min-h-screen flex flex-col justify-center relative overflow-hidden py-12 lg:py-24 dark-bg"
       style={{ fontFamily: '"Inter", sans-serif' }}
     >
       {/* --- Background Elements --- */}

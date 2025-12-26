@@ -96,7 +96,7 @@ function PackageSection() {
     <section
       ref={container}
       id="packages"
-      className="relative min-h-screen bg-[#FFFBF6] text-black py-24 lg:py-32 px-4 lg:px-12 overflow-hidden selection:bg-black selection:text-[#B9935B]"
+      className="relative min-h-screen bg-[#FFFBF6] text-black py-24 lg:py-32 px-4 lg:px-12 overflow-hidden selection:bg-black selection:text-[#B9935B] dark-bg"
       style={{ fontFamily: fonts.body }} 
     >
      
@@ -261,7 +261,7 @@ function PackageSection() {
                             <div className="relative z-30">
                                 <Link 
                                     href="/contact" 
-                                    className="w-full bg-[#B9935B] text-black h-16 flex items-center justify-center gap-4 font-black uppercase tracking-widest hover:bg-white transition-all duration-300 group/btn border-2 border-[#B9935B] hover:border-white"
+                                    className="w-full bg-[#B9935B] text-black h-16 flex items-center justify-center gap-4 font-[700] uppercase tracking-widest hover:bg-white transition-all duration-300 group/btn border-2 border-[#B9935B] hover:border-white"
                                     style={{ fontFamily: fonts.body }}
                                 >
                                     Start Protocol

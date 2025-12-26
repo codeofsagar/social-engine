@@ -127,8 +127,8 @@ function AboutSection() {
       </div>
 
       {/* --- HERO TEXT SECTION --- */}
-      <div className={`relative z-10 min-h-[90vh] flex flex-col justify-center px-6 md:px-16 pt-24 pb-20 border-b-2 border-[${gold}] bg-[#FFFBF6]`}>
-        <div className="absolute inset-0 opacity-[0.08] pointer-events-none"
+      <div className={`relative dark-bg z-10 min-h-[90vh] flex flex-col justify-center px-6 md:px-16 pt-24 pb-20 border-b-2 border-[${gold}] bg-[#FFFBF6]`}>
+        <div className="absolute inset-0 opacity-[0.08] pointer-events-none "
           style={{ backgroundImage: "linear-gradient(#000 0.5px, transparent 0.5px), linear-gradient(90deg, #000 0.5px, transparent 0.5px)", backgroundSize: "20px 20px" }}>
         </div>
 
@@ -380,7 +380,7 @@ function AboutSection() {
                     href="/contact"
                     className={`group relative inline-flex items-center justify-center px-20 py-8 bg-[${gold}] overflow-hidden transition-transform active:scale-95`}
                 >
-                    <span className="relative z-10 font-black text-2xl text-black uppercase tracking-widest flex items-center gap-4" style={{ fontFamily: fonts.mono }}>
+                    <span className="relative z-10 font-[700] text-2xl text-black uppercase tracking-widest flex items-center gap-4" style={{ fontFamily: fonts.mono }}>
                         Initiate Launch <ArrowRight />
                     </span>
                     <div className="absolute inset-0 bg-white translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out z-0"></div>

@@ -181,7 +181,7 @@ function HeroSection() {
                <div className="absolute inset-0 bg-white translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-in-out z-0" />
 
                <span 
-                 className="relative z-20 font-black text-sm md:text-base uppercase tracking-[0.2em] flex items-center gap-4"
+                 className="relative z-20 font-[700] text-sm md:text-base uppercase tracking-[0.2em] flex items-center gap-4"
                  style={{ fontFamily: fonts.mono }} 
                >
                  Initiate Launch

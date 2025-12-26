@@ -169,7 +169,7 @@ function ServicesSection() {
       </div>
 
       {/* --- Services List (Interactive Folder System) --- */}
-      <div className="relative z-10 border-b-2 border-black bg-white">
+      <div className="relative z-10 border-b-2 border-black bg-white dark-bg">
         {SERVICES_DATA.map((service, index) => (
           <div
             key={index}
@@ -234,7 +234,7 @@ function ServicesSection() {
       {/* --- Footer / Dashboard --- */}
       <div className="grid grid-cols-1 lg:grid-cols-2">
         {/* Left Panel: Stats */}
-        <div className="border-r border-black p-12 lg:p-24 flex flex-col justify-center bg-[#FFFBF6] relative">
+        <div className="border-r border-black p-12 lg:p-24 flex flex-col justify-center bg-[#FFFBF6] relative dark-bg">
             <div className="absolute inset-0 opacity-[0.05]" style={{ backgroundImage: `linear-gradient(#000 1px, transparent 1px), linear-gradient(90deg, #000 1px, transparent 1px)`, backgroundSize: '30px 30px' }}></div>
             
             <div className="relative z-10 flex flex-col gap-16">

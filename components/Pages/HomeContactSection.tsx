@@ -55,7 +55,7 @@ function HomeContactSection() {
   return (
     <section
       ref={containerRef}
-      className="bg-[#FFFBF6] text-black py-24 lg:py-32 px-4 relative overflow-hidden border-t border-black/10"
+      className="bg-[#FFFBF6] text-black py-24 lg:py-32 px-4 relative overflow-hidden border-t border-black/10 dark-bg"
       style={{ fontFamily: '"Inter", sans-serif' }}
     >
       {/* --- Background Elements --- */}

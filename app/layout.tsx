@@ -3,6 +3,7 @@ import { Header, Footer } from "@/components";
 import { constructMetaData } from "@/utils/metadata";
 import Script from "next/script";
 import SmoothScroll from "@/components/SmoothScroll";
+import { BackgroundProvider } from "@/components/BackgroundContext";
 
 export const metadata = constructMetaData();
 
@@ -26,11 +27,13 @@ export default function RootLayout({
       </head>
 
       <body className="bg-bridal-health text-trace-ash">
+        <BackgroundProvider>
         <SmoothScroll>
           <Header />
           <main>{children}</main>
           <Footer />
         </SmoothScroll>
+        </BackgroundProvider>
 
         {/* Facebook Pixel */}
         <Script
