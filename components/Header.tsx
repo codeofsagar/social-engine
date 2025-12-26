@@ -88,19 +88,19 @@ const Header = () => {
     return {
       desktop: {
         container: theme === 'light' 
-          ? 'bg-white/90 border-black/5 shadow-lg backdrop-blur-md' // Light Mode
-          : 'bg-black/90 border-white/5 shadow-2xl backdrop-blur-md', // Dark Mode
+          ? 'bg-white border-black/5 shadow-lg backdrop-blur-md' // Light Mode
+          : 'bg-black border-white/5 shadow-2xl backdrop-blur-md', // Dark Mode
         text: theme === 'light' ? 'text-black/80 hover:text-[#B9935B]' : 'text-white/90 hover:text-[#B9935B]',
         buttonText: theme === 'light' ? 'text-black' : 'text-white',
         dropdown: theme === 'light' 
-          ? 'bg-white border-black/10 text-black shadow-xl' 
+          ? 'bg-white border-black text-black shadow-xl' 
           : 'bg-[#0a0a0a] border-[#B9935B]/20 text-white shadow-2xl',
         dropdownHover: theme === 'light' ? 'hover:bg-black/5' : 'hover:bg-white/5'
       },
       mobile: {
         container: theme === 'light'
-          ? 'bg-white/90 border-black/10'
-          : 'bg-black/60 border-white/10',
+          ? 'bg-white border-black/10'
+          : 'bg-black border-white/10',
         icon: theme === 'light' ? 'text-black' : 'text-white'
       }
     };
