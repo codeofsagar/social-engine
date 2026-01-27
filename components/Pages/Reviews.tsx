@@ -167,7 +167,7 @@ function Reviews() {
                                 {TESTIMONIALS[active].name}
                             </span>
                             <span className="text-lg font-mono mt-2" style={{ color: COLORS.gold }}>
-                                {TESTIMONIALS[active].role} // {TESTIMONIALS[active].company}
+                                {TESTIMONIALS[active].role}  {TESTIMONIALS[active].company}
                             </span>
                         </div>
                     </motion.div>
