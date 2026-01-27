@@ -16,7 +16,6 @@ const TESTIMONIALS = [
     name: "Sarah Johnson",
     role: "Marketing Director",
     company: "TechStart Inc.",
-    image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
   },
   {
     id: 2,
@@ -24,7 +23,6 @@ const TESTIMONIALS = [
     name: "Michael Chen",
     role: "CEO",
     company: "GrowthLabs",
-    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
   },
   {
     id: 3,
@@ -32,7 +30,6 @@ const TESTIMONIALS = [
     name: "Jessica Williams",
     role: "Founder",
     company: "Bloom Cosmetics",
-    image: "https://images.unsplash.com/photo-1519699047748-de8e457a634e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
   },
 ];
 
@@ -55,7 +52,7 @@ function Reviews() {
   const [autoplay, setAutoplay] = useState(true);
   const [progress, setProgress] = useState(0);
 
-  // Auto-play Logic with Progress Bar
+  // Auto-play Logic
   useEffect(() => {
     if (!autoplay) return;
     
@@ -76,7 +73,6 @@ function Reviews() {
     return () => clearInterval(timer);
   }, [autoplay, active]);
 
-  // Manual Navigation
   const handleNext = () => {
     setActive((prev) => (prev + 1) % TESTIMONIALS.length);
     resetTimer();
@@ -92,208 +88,135 @@ function Reviews() {
     setProgress(0);
   };
 
-  // GSAP Entrance Animations
   useGSAP(() => {
-    const tl = gsap.timeline({
+    gsap.from(".stat-entry", {
+      y: 50,
+      opacity: 0,
+      stagger: 0.1,
+      duration: 1,
+      ease: "power3.out",
       scrollTrigger: {
         trigger: containerRef.current,
         start: "top 70%",
       }
     });
-
-    tl.from(".stat-entry", {
-      y: 50,
-      opacity: 0,
-      stagger: 0.1,
-      duration: 1,
-      ease: "power3.out"
-    });
-
   }, { scope: containerRef });
 
   return (
     <section 
       ref={containerRef}
       id="reviews"
-      // UPDATED: Reduced vertical padding on mobile (py-12 vs py-24)
-      className="bg-[#FFFBF6] text-black min-h-screen flex flex-col justify-center relative overflow-hidden py-12 lg:py-24 dark-bg"
+      className="bg-[#FFFBF6] text-black min-h-screen flex flex-col justify-center relative overflow-hidden py-12 lg:py-24"
       style={{ fontFamily: '"Inter", sans-serif' }}
     >
-      {/* --- Background Elements --- */}
-     
-
-      {/* 2. Background Image */}
-      <div 
-        className="absolute inset-0 z-[1] opacity-[0.07] mix-blend-luminosity pointer-events-none"
-        style={{
-            backgroundImage: `url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop')`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            filter: 'grayscale(10%)' 
-        }}
-      ></div>
-
-      
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full text-center select-none pointer-events-none opacity-[0.03] z-[2]">
+      {/* Background Big Text */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full text-center select-none pointer-events-none opacity-[0.03] z-[1]">
         <h1 
-          className="text-[20vw] leading-none text-black"
-          style={{ 
-            fontFamily:"'Kanit', sans-serif",
-            fontWeight: 900 
-          }}
+          className="text-[25vw] leading-none text-black font-black uppercase"
+          style={{ fontFamily: "'Kanit', sans-serif" }}
         >
-          TRUST
+          Results
         </h1>
       </div>
 
-      <div className="max-w-7xl mx-auto px-6 lg:px-12 w-full relative z-10">
+      <div className="max-w-5xl mx-auto px-6 lg:px-12 w-full relative z-10">
         
-        {/* Header Specs (IBM Plex Mono) */}
-        {/* UPDATED: Reduced bottom margin on mobile (mb-8 vs mb-16) */}
-        <div className="flex items-center justify-between mb-8 lg:mb-16 border-b border-black/10 pb-6">
+        {/* Header Section */}
+        <div className="flex items-center justify-between mb-12 border-b border-black/10 pb-6">
             <div className="flex items-center gap-4">
                 <span className="w-2 h-2 rounded-full animate-pulse" style={{ backgroundColor: COLORS.gold }}></span>
                 <span 
-                  className="text-sm uppercase tracking-widest opacity-80"
-                  style={{ fontFamily: '"IBM Plex Mono", monospace', color: COLORS.gold }}
+                  className="text-sm uppercase tracking-widest font-mono"
+                  style={{ color: COLORS.gold }}
                 >
-                  Live Client Feedback
+                  Client Testimonials
                 </span>
             </div>
-            <div 
-              className="hidden md:block text-sm uppercase tracking-widest opacity-60"
-              style={{ fontFamily: '"IBM Plex Mono", monospace' }}
-            >
-                Data Updated: 2025
+            <div className="hidden md:block text-sm uppercase tracking-widest opacity-60 font-mono">
+                Updated: 2026
             </div>
         </div>
 
-        {/* Content Layout */}
-        {/* UPDATED: Removed min-height on mobile (min-h-[500px]) to allow tight stacking */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-24 items-center lg:min-h-[500px]">
+        {/* Testimonial Content - Now Full Width */}
+        <div className="relative">
+            <IconQuote 
+              className="w-12 h-12 md:w-20 md:h-20 mb-6 opacity-20" 
+              style={{ color: COLORS.gold }}
+            />
             
-            {/* Left: Image & Controls */}
-            <div className="lg:col-span-5 relative">
-                {/* Image Container */}
-                <div className="relative aspect-[4/5] overflow-hidden rounded-sm bg-gray-200 border border-black shadow-[8px_8px_0px_rgba(185,147,91,0.15)]">
-                    <AnimatePresence mode="wait">
-                        <motion.img
-                            key={TESTIMONIALS[active].id}
-                            src={TESTIMONIALS[active].image}
-                            alt={TESTIMONIALS[active].name}
-                            initial={{ scale: 1.1, opacity: 0 }}
-                            animate={{ scale: 1, opacity: 1 }}
-                            exit={{ scale: 1.1, opacity: 0 }}
-                            transition={{ duration: 0.7, ease: "easeInOut" }}
-                            className="absolute inset-0 w-full h-full object-cover grayscale contrast-125"
-                        />
-                    </AnimatePresence>
-                    
-                    {/* Overlay Gradient */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
-                </div>
+            <div className="min-h-[300px] flex flex-col justify-center">
+                <AnimatePresence mode="wait">
+                    <motion.div
+                        key={TESTIMONIALS[active].id}
+                        initial={{ x: 20, opacity: 0 }}
+                        animate={{ x: 0, opacity: 1 }}
+                        exit={{ x: -20, opacity: 0 }}
+                        transition={{ duration: 0.5, ease: "easeOut" }}
+                    >
+                        <h3 
+                          className="text-3xl md:text-5xl lg:text-6xl font-medium leading-tight mb-10 text-black tracking-tight"
+                        >
+                            &ldquo;{TESTIMONIALS[active].quote}&rdquo;
+                        </h3>
+                        
+                        <div className="flex flex-col border-l-4 pl-8" style={{ borderColor: COLORS.gold }}>
+                            <span 
+                              className="text-2xl md:text-4xl uppercase font-black"
+                              style={{ fontFamily: "'Kanit', sans-serif" }}
+                            >
+                                {TESTIMONIALS[active].name}
+                            </span>
+                            <span className="text-lg font-mono mt-2" style={{ color: COLORS.gold }}>
+                                {TESTIMONIALS[active].role} // {TESTIMONIALS[active].company}
+                            </span>
+                        </div>
+                    </motion.div>
+                </AnimatePresence>
+            </div>
 
-                {/* Progress Bar */}
-                <div className="absolute bottom-0 left-0 w-full h-1 bg-black/20 z-20">
-                    <motion.div 
-                        className="h-full"
-                        style={{ width: `${progress}%`, backgroundColor: COLORS.gold }}
-                    />
-                </div>
-
-                {/* Controls */}
-                <div className="absolute -bottom-8 right-0 translate-y-full flex gap-4">
+            {/* Navigation & Progress Bar UI */}
+            <div className="mt-16 flex flex-col md:flex-row items-center gap-8">
+                <div className="flex gap-2">
                     <button 
                         onClick={handlePrev}
-                        className="w-14 h-14 border border-black flex items-center justify-center bg-[#FFFBF6] hover:bg-black transition-colors duration-300 group"
+                        className="w-16 h-16 border border-black flex items-center justify-center hover:bg-black hover:text-[#B9935B] transition-all duration-300"
                     >
-                        <IconArrowLeft size={20} className="group-hover:text-[#B9935B]" />
+                        <IconArrowLeft size={24} />
                     </button>
                     <button 
                         onClick={handleNext}
-                        className="w-14 h-14 border border-black flex items-center justify-center bg-[#FFFBF6] hover:bg-black transition-colors duration-300 group"
+                        className="w-16 h-16 border border-black flex items-center justify-center hover:bg-black hover:text-[#B9935B] transition-all duration-300"
                     >
-                        <IconArrowRight size={20} className="group-hover:text-[#B9935B]" />
+                        <IconArrowRight size={24} />
                     </button>
                 </div>
-            </div>
 
-            {/* Right: Text Content */}
-            <div className="lg:col-span-7 flex flex-col justify-center mt-12 lg:mt-0">
-                <IconQuote 
-                  className="w-12 h-12 md:w-16 md:h-16 mb-4 lg:mb-8 opacity-100" 
-                  style={{ color: COLORS.gold }}
-                />
+                {/* Horizontal Progress Bar */}
+                <div className="flex-1 w-full h-[2px] bg-black/10 relative">
+                    <motion.div 
+                        className="absolute top-0 left-0 h-full"
+                        style={{ width: `${progress}%`, backgroundColor: COLORS.gold }}
+                    />
+                </div>
                 
-                {/* UPDATED: Changed height logic. Mobile is auto (grows with text), Desktop is fixed to prevent jitter. */}
-                <div className="min-h-[250px] lg:h-[350px] flex items-start lg:items-center">
-                    <AnimatePresence mode="wait">
-                        <motion.div
-                            key={TESTIMONIALS[active].id}
-                            initial={{ y: 20, opacity: 0 }}
-                            animate={{ y: 0, opacity: 1 }}
-                            exit={{ y: -20, opacity: 0 }}
-                            transition={{ duration: 0.5 }}
-                        >
-                            {/* Quote Body (Inter) */}
-                            <h3 
-                              className="text-2xl md:text-3xl lg:text-4xl font-medium leading-tight mb-6 lg:mb-8 text-black"
-                              style={{ fontFamily: '"Inter", sans-serif' }}
-                            >
-                                &ldquo;{TESTIMONIALS[active].quote}&rdquo;
-                            </h3>
-                            
-                            <div className="flex flex-col border-l-2 pl-6" style={{ borderColor: COLORS.gold }}>
-                              
-                                <span 
-                                  className="text-2xl md:text-3xl uppercase tracking-wide leading-none mb-2"
-                                  style={{ 
-                                    fontFamily:"'Kanit', sans-serif", 
-                                    fontWeight: 900,
-                                    color: COLORS.black
-                                  }}
-                                >
-                                    {TESTIMONIALS[active].name}
-                                </span>
-                                {/* Role (IBM Plex Mono) */}
-                                <span 
-                                  className="text-sm opacity-90"
-                                  style={{ 
-                                    fontFamily: '"IBM Plex Mono", monospace',
-                                    color: COLORS.gold
-                                  }}
-                                >
-                                    {TESTIMONIALS[active].role} / {TESTIMONIALS[active].company}
-                                </span>
-                            </div>
-                        </motion.div>
-                    </AnimatePresence>
+                <div className="font-mono text-sm opacity-60">
+                    0{active + 1} / 0{TESTIMONIALS.length}
                 </div>
             </div>
         </div>
 
         {/* Stats Footer */}
-        {/* UPDATED: Reduced top margin on mobile (mt-12 vs mt-32) */}
-        <div className="mt-12 lg:mt-32 border-t border-black">
-            <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-black/10">
+        <div className="mt-20 lg:mt-32 pt-10 border-t border-black">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
                 {STATS.map((stat, i) => (
-                    <div key={i} className="stat-entry pt-6 lg:pt-8 pl-4 lg:pl-8">
-                       
+                    <div key={i} className="stat-entry">
                         <div 
-                          className="text-3xl lg:text-5xl mb-2"
-                          style={{ 
-                            fontFamily:"'Kanit', sans-serif", 
-                            fontWeight: 900,
-                            color: COLORS.gold
-                          }}
+                          className="text-4xl lg:text-6xl font-black mb-1"
+                          style={{ fontFamily: "'Kanit', sans-serif", color: COLORS.gold }}
                         >
                           {stat.value}
                         </div>
-                        {/* Stat Label (IBM Plex Mono) */}
-                        <div 
-                          className="text-xs uppercase tracking-widest text-black/60"
-                          style={{ fontFamily: '"IBM Plex Mono", monospace' }}
-                        >
+                        <div className="text-xs uppercase tracking-widest font-mono opacity-60">
                           {stat.label}
                         </div>
                     </div>
