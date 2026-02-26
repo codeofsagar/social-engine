@@ -1,9 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Add this line exactly:
-  transpilePackages: ['@splinetool/react-spline'],
-
+  // Required for SFTP/Static hosting
+  output: 'export', 
   images: {
+    unoptimized: true, 
     remotePatterns: [
       {
         protocol: 'https',
@@ -15,6 +15,7 @@ const nextConfig = {
       },
     ],
   },
+  transpilePackages: ['@splinetool/react-spline'],
 };
 
 module.exports = nextConfig;

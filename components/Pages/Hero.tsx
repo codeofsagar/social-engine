@@ -94,12 +94,7 @@ function HeroSection() {
 
       {/* HUD Elements */}
       <div className="hud-item absolute bottom-12 left-6 md:bottom-16 md:left-12 hidden md:flex flex-col gap-2 z-30 opacity-80">
-         <div className="flex items-center gap-3 text-white" style={{ fontFamily: fonts.mono }}>
-             <Zap size={18} className="text-[#B9935B]" />
-             <span className="text-xs md:text-sm font-bold tracking-widest">PWR_LEVEL: OPTIMAL</span>
-         </div>
-         <div className="h-[1px] w-32 bg-white/20"></div>
-         <span className="text-xs text-gray-400 font-mono">PING: 14ms // P2P_READY</span>
+         
       </div>
 
       <div className="hud-item absolute bottom-12 right-6 md:bottom-16 md:right-12 hidden md:flex items-center gap-3 z-30 opacity-80">
@@ -119,7 +114,7 @@ function HeroSection() {
       {/* =========================================
           3. MAIN CONTENT LAYER
       ========================================= */}
-      <div className="container mx-auto px-4 md:px-6 relative z-20 flex flex-col items-center text-center pt-20 md:pt-16">
+      <div className="container mx-auto px-4 md:px-6 relative z-20 flex flex-col items-center text-center pt-1 md:pt-16">
         
         {/* Badge */}
         <div className="hero-badge mb-6 md:mb-4 inline-flex items-center gap-3 px-4 py-1.5 bg-black/40 border border-[#B9935B]/30 backdrop-blur-md rounded-full">
@@ -133,29 +128,28 @@ function HeroSection() {
         </div>
 
         {/* Cinematic Headline */}
-        <div className="max-w-6xl mx-auto w-full">
+        <div className="max-w-6xl 2xl:max-w-screen-2xl mx-auto w-full mb-10 md:mb-0">
             <h1 
               className="flex flex-col items-center justify-center tracking-tighter leading-[1.1] lg:leading-[0.9]"
               style={{ fontFamily: fonts.header, fontWeight: 900 }}
             >
               {/* LINE 1 */}
               <div className="overflow-hidden mb-2 md:mb-0">
-                <span className="hero-line block text-white text-[12vw] lg:text-[7vw] mix-blend-difference">
+                <span className="hero-line block text-white text-[12vw] lg:text-[6vw] 2xl:text-[5vw] mix-blend-difference">
                   STOP WASTING
                 </span>
               </div>
               
               {/* LINE 2 */}
               <div className="overflow-hidden relative z-10 mb-2 md:mb-0">
-                  <span className="hero-line block text-[#B9935B] text-[12vw] lg:text-[7vw] drop-shadow-[0_0_50px_rgba(185,147,91,0.5)]">
+                  <span className="hero-line block text-[#B9935B] text-[12vw] lg:text-[6vw] 2xl:text-[5vw] drop-shadow-[0_0_50px_rgba(185,147,91,0.5)]">
                     MONEY ON
                   </span>
                   <div className="hero-fade-up h-[2px] w-[60%] bg-[#B9935B] mx-auto mt-2 opacity-50 shadow-[0_0_10px_#B9935B]"></div>
               </div>
 
-              {/* LINE 3 */}
               <div className="overflow-hidden">
-                  <span className="hero-line block text-white text-[12vw] lg:text-[7vw]">
+                  <span className="hero-line block text-white text-[12vw] lg:text-[6vw] 2xl:text-[5vw]">
                     BAD MARKETING
                   </span>
               </div>
@@ -164,14 +158,16 @@ function HeroSection() {
 
         {/* Description */}
         <p 
-            className="hero-fade-up text-sm md:text-lg text-gray-400 max-w-[90%] md:max-w-2xl leading-relaxed mb-10 md:mb-12 mt-8 md:mt-0 border-l-2 border-[#B9935B] pl-6 md:pl-0 md:border-l-0 md:border-t border-white/10 md:pt-8"
+            className="hero-fade-up text-sm md:text-lg 2xl:text-2xl text-white max-w-[90%] md:max-w-2xl 2xl:max-w-5xl leading-relaxed mb-10 md:mb-0 border-l-2 border-[#B9935B] pl-6 md:pl-0 md:border-l-0 md:border-t border-white/10 md:pt-8"
             style={{ fontFamily: fonts.body }}
         >
           We combine cinematic visuals with data-driven strategies to convert your ad spend into measurable profit, <span className="text-white font-medium shadow-[0_0_15px_rgba(255,255,255,0.2)] bg-white/5 px-1">using state-of-the-art AI tools</span> to enhance every step of the process.
+          <br /><br/>
+          Our team of software engineers can create any cutting edge software system whether it&apos;s a simple website landing page or the most complex AI agent you could think of to do any tasks that you could imagine.
         </p>
 
         {/* CTA */}
-        <div className="hero-fade-up flex flex-col items-center gap-4">
+        <div className="hero-fade-up pt-0 md:pt-8 flex flex-col items-center gap-4">
             <Link 
               href="/contact"
               className="group relative inline-flex items-center justify-center px-10 md:px-12 py-5 md:py-6 bg-[#B9935B] text-black overflow-hidden hover:scale-105 hover:shadow-[0_0_50px_rgba(185,147,91,0.6)] shadow-[0_0_30px_rgba(185,147,91,0.3)] transition-all duration-300"
@@ -189,10 +185,7 @@ function HeroSection() {
                </span>
             </Link>
 
-            <div className="flex items-center gap-2 opacity-50 text-[10px] font-mono text-[#B9935B]">
-                <Activity size={10} />
-                <span>SYSTEM_READY</span>
-            </div>
+            
         </div>
 
       </div>

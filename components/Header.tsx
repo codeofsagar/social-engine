@@ -131,14 +131,14 @@ const Header = () => {
     },
     { 
       name: 'Landing Page Lead Booster', 
-      href: 'https://ap-web-eight.vercel.app/', 
-      desc: 'Maximize your lead generation velocity', 
+      href: 'https://offer.apagency.ca', 
+      desc: 'Landing page Lead Booster optimized lead generation', 
       num: "02",
       external: true 
     },
     { 
       name: 'AdCraft', 
-      href: 'https://ap-video.vercel.app/', 
+      href: 'https://video-offer.apagency.ca', 
       desc: 'High-velocity video asset production', 
       num: "03",
       external: true 
@@ -154,12 +154,15 @@ const Header = () => {
       {/* ======================= 
           DESKTOP HEADER 
       ======================== */}
-      <header className={`hidden md:flex fixed top-4 left-1/2 transform -translate-x-1/2 w-[90%] max-w-[1400px] h-16 border z-50 items-center px-8 transition-all duration-300 ${themeClasses.desktop.container}`}>
+      <header className={`hidden lg:flex fixed top-4 left-1/2 transform -translate-x-1/2 w-[90%] max-w-[2400px] h-16 border z-50 items-center px-8 transition-all duration-300 ${themeClasses.desktop.container}`}>
         
-        <div className="flex-shrink-0">
-          <Link href="/" className="relative block h-24 w-24 transition-transform hover:scale-105 overflow-hidden" >
-            {/* Note: Ensure your logo is visible on both white and black backgrounds */}
-            <Image src="/images/logo.png" alt="Logo" fill className="object-contain" priority />
+        <div className="flex-shrink-0 flex items-center">
+          <Link 
+            href="/" 
+            className="text-2xl font-bold uppercase tracking-wider transition-transform hover:scale-105 text-[#CFA66B]" 
+            style={{ fontFamily: fonts.header }}
+          >
+            ap agency
           </Link>
         </div>
 
@@ -240,33 +243,37 @@ const Header = () => {
       {/* ======================= 
           MOBILE HEADER 
       ======================== */}
-      <header className={`md:hidden fixed top-3 left-1/2 transform -translate-x-1/2 w-[94%] h-16 backdrop-blur-xl z-50 flex items-center px-4 border shadow-lg transition-colors duration-300 ${themeClasses.mobile.container}`}>
-        <div className="relative h-20 w-20">
-          <Image src="/images/logo.png" alt="Logo" fill className="object-contain" priority />
-        </div>
+      <header className={`lg:hidden fixed top-3 left-1/2 transform -translate-x-1/2 w-[96%] max-w-[calc(100%-1rem)] h-14 sm:h-16 backdrop-blur-xl z-50 flex items-center px-3 sm:px-4 border shadow-lg transition-colors duration-300 ${themeClasses.mobile.container}`}>
+        <Link 
+          href="/" 
+          className="text-sm sm:text-xl font-bold uppercase tracking-wider transition-transform hover:scale-105 text-[#CFA66B] whitespace-nowrap" 
+          style={{ fontFamily: fonts.header }}
+        >
+          ap agency
+        </Link>
         
-        <div className="ml-auto flex items-center gap-3">
+        <div className="ml-auto flex items-center gap-2 sm:gap-3">
           <Link 
             href="/contact" 
             style={{ fontFamily: fonts.body }}
-            className={`bg-[#B9935B] text-black px-6 py-2.5 hover:bg-[#cfa66b] transition-all hover:scale-105 active:scale-95 flex items-center gap-2 shadow-lg ${buttonTextStyle}`}
+            className={`bg-[#B9935B] text-black px-3 py-1.5 sm:px-6 sm:py-2.5 hover:bg-[#cfa66b] transition-all hover:scale-105 active:scale-95 flex items-center gap-1 sm:gap-2 shadow-lg ${buttonTextStyle} text-[10px] sm:text-sm`}
           >
-            Contact
-            <ArrowRight className="h-4 w-4 stroke-[3px]" />
+            <span className="hidden min-[340px]:inline">Contact</span>
+            <ArrowRight className="h-3 w-3 sm:h-4 sm:w-4 stroke-[3px]" />
           </Link>
           
           <button 
-            className={`p-2 -mr-2 transition-colors ${themeClasses.mobile.icon} hover:text-[#B9935B]`} 
+            className={`p-1 sm:p-2 -mr-1 sm:-mr-2 transition-colors ${themeClasses.mobile.icon} hover:text-[#B9935B]`} 
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           >
-            {mobileMenuOpen ? <X className="h-7 w-7" /> : <Menu className="h-7 w-7" />}
+            {mobileMenuOpen ? <X className="h-6 w-6 sm:h-7 sm:w-7" /> : <Menu className="h-6 w-6 sm:h-7 sm:w-7" />}
           </button>
         </div>
       </header>
 
       {/* MOBILE MENU OVERLAY (Kept Dark as per standard pattern) */}
       {mobileMenuOpen && (
-        <div className="md:hidden fixed inset-0 bg-black z-40 flex flex-col p-6 pt-24 overflow-y-auto" style={{ fontFamily: fonts.body }}>
+        <div className="lg:hidden fixed inset-0 bg-black z-40 flex flex-col p-6 pt-24 overflow-y-auto" style={{ fontFamily: fonts.body }}>
             {/* ... Content of mobile menu kept exactly as provided ... */}
             <div className="space-y-4 mb-10">
                 <div className="flex items-center gap-4 mb-6 opacity-60">

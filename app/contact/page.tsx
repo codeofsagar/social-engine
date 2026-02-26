@@ -147,7 +147,7 @@ function ContactSection() {
             <div className="w-full lg:w-1/2 flex justify-center lg:justify-end perspective-1000">
                 <a 
                     ref={ticketRef}
-                    href="https://calendly.com/apdigitalagency/30-minute-landing-page-consultation"
+                    href="https://calendly.com/alex-apagency/30min"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="group relative w-full max-w-md bg-white border-2 border-black flex flex-col p-6 md:p-10 transition-all duration-500 hover:bg-black hover:text-[#FFFBF6] hover:-translate-y-2 shadow-[10px_10px_0px_0px_rgba(0,0,0,0.1)] hover:shadow-[15px_15px_0px_0px_#B9935B]"

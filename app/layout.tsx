@@ -4,6 +4,7 @@ import { constructMetaData } from "@/utils/metadata";
 import Script from "next/script";
 import SmoothScroll from "@/components/SmoothScroll";
 import { BackgroundProvider } from "@/components/BackgroundContext";
+import FloatingCTA from "@/components/FloatingCTA";
 
 export const metadata = constructMetaData();
 
@@ -32,6 +33,7 @@ export default function RootLayout({
           <Header />
           <main>{children}</main>
           <Footer />
+          <FloatingCTA />
         </SmoothScroll>
         </BackgroundProvider>
 

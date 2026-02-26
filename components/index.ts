@@ -1,4 +1,4 @@
-import Menu from "./Menu";
+
 import Hero from "./Pages/Hero";
 import Header from "./Header";
 import AboutSection from "./Pages/AboutSection";
@@ -9,5 +9,5 @@ import AdStrategyForm from "./Pages/AdStrategyForm";
 
 import Footer from "./Pages/Footer";
 
-export { Menu, Hero, Header, AboutSection, PackageSection, Reviews, ServicesSection, AdStrategyForm,Footer 
+export { Hero, Header, AboutSection, PackageSection, Reviews, ServicesSection, AdStrategyForm,Footer 
 }

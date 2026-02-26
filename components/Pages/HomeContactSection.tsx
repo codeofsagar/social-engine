@@ -116,7 +116,7 @@ function HomeContactSection() {
         <div className="flex justify-center pb-8">
           <a
             ref={ticketRef}
-            href="https://calendly.com/apdigitalagency/30-minute-landing-page-consultation"
+            href="https://calendly.com/alex-apagency/30min"
             target="_blank"
             rel="noopener noreferrer"
             className="group relative w-full max-w-2xl bg-white border-2 border-black flex flex-col md:flex-row shadow-[10px_10px_0px_0px_rgba(0,0,0,0.1)] hover:shadow-[15px_15px_0px_0px_#B9935B] transition-all duration-300 hover:-translate-y-2 overflow-hidden"

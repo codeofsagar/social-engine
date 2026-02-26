@@ -13,7 +13,7 @@ const processSteps = [
   {
     id: "01",
     label: "PHASE ONE",
-    sub: "RECONNAISSANCE",
+    sub: "",
     title: "Diagnostic",
     desc: "We don't guess. We audit your entire funnel, identifying exactly where money is leaking.",
     tags: ["Audit", "Data Analysis", "Recon"],
@@ -22,7 +22,7 @@ const processSteps = [
   {
     id: "02",
     label: "PHASE TWO",
-    sub: "INFRASTRUCTURE",
+    sub: "",
     title: "Construction",
     desc: "Building the creative assets and landing page architecture required for high-conversion velocity.",
     tags: ["Creative", "Copywriting", "Dev"],
@@ -31,7 +31,7 @@ const processSteps = [
   {
     id: "03",
     label: "PHASE THREE",
-    sub: "DOMINATION",
+    sub: "",
     title: "Velocity",
     desc: "Launch and rapid iteration. We scale budgets only when ROAS targets are met and sustained.",
     tags: ["Media Buying", "Scaling", "ROI"],
@@ -251,7 +251,7 @@ function AboutSection() {
         </button>
 
         {/* Track */}
-        <div ref={scrollTrack} className="flex flex-col md:flex-row h-auto md:h-full w-full md:w-max relative z-10">
+        <div ref={scrollTrack} className="flex flex-col md:flex-row h-auto md:h-full w-full md:w-max relative z-10 will-change-transform">
           
           {/* 1. INTRO PANEL */}
           <div className={`w-full md:w-[45vw] lg:w-[40vw] h-auto md:h-full flex-shrink-0 flex flex-col justify-center px-8 py-20 md:px-16 border-b-2 md:border-b-0 md:border-r-2 border-[${gold}] bg-[#050505]/95 relative overflow-hidden text-white`}>
@@ -341,21 +341,19 @@ function AboutSection() {
             <div className="absolute inset-0 z-0 opacity-40 pointer-events-none">
                  {/* Floor */}
                  <div className="absolute bottom-0 w-full h-[50%] bg-[linear-gradient(transparent_0%,rgba(185,147,91,0.2)_100%)]"></div>
-                 <div className={`absolute -bottom-[50%] -left-[50%] w-[200%] h-[100%] animate-grid-forward`} 
+                 <div className={`absolute -bottom-[50%] -left-[50%] w-[200%] h-[100%] animate-grid-floor`} 
                       style={{ 
                           backgroundImage: `linear-gradient(0deg, transparent 24%, ${gold}40 25%, ${gold}40 26%, transparent 27%, transparent 74%, ${gold}40 75%, ${gold}40 76%, transparent 77%, transparent), linear-gradient(90deg, transparent 24%, ${gold}40 25%, ${gold}40 26%, transparent 27%, transparent 74%, ${gold}40 75%, ${gold}40 76%, transparent 77%, transparent)`,
                           backgroundSize: '100px 100px',
-                          transform: 'rotateX(60deg)'
                       }}>
                  </div>
                  
                  {/* Ceiling (Mirrored) */}
                  <div className="absolute top-0 w-full h-[50%] bg-[linear-gradient(rgba(185,147,91,0.2)_0%,transparent_100%)]"></div>
-                 <div className={`absolute -top-[50%] -left-[50%] w-[200%] h-[100%] animate-grid-forward`} 
+                 <div className={`absolute -top-[50%] -left-[50%] w-[200%] h-[100%] animate-grid-ceiling`} 
                       style={{ 
                           backgroundImage: `linear-gradient(0deg, transparent 24%, ${gold}40 25%, ${gold}40 26%, transparent 27%, transparent 74%, ${gold}40 75%, ${gold}40 76%, transparent 77%, transparent), linear-gradient(90deg, transparent 24%, ${gold}40 25%, ${gold}40 26%, transparent 27%, transparent 74%, ${gold}40 75%, ${gold}40 76%, transparent 77%, transparent)`,
                           backgroundSize: '100px 100px',
-                          transform: 'rotateX(-60deg)'
                       }}>
                  </div>
             </div>
@@ -371,7 +369,7 @@ function AboutSection() {
                     </span>
                 </div>
 
-                <h2 className="text-[9vw] font-black text-white uppercase leading-none mb-12 mix-blend-difference drop-shadow-[0_0_10px_rgba(255,255,255,0.3)]" style={{ fontFamily: fonts.header }}>
+                <h2 className="text-[9vw] font-black text-white uppercase leading-none mb-12 [text-shadow:0_0_20px_rgba(255,255,255,0.4)]" style={{ fontFamily: fonts.header }}>
                     Ready to <br />
                     <span className={`text-[${gold}]`}>Dominate?</span>
                 </h2>
@@ -403,11 +401,17 @@ function AboutSection() {
         @keyframes spin { 100% { transform: rotate(360deg); } }
         .animate-spin-slow { animation: spin 4s linear infinite; }
 
-        @keyframes grid-forward {
-            0% { background-position: 0 0; }
-            100% { background-position: 0 100px; }
+        @keyframes grid-floor {
+            0% { transform: rotateX(60deg) translateY(0); }
+            100% { transform: rotateX(60deg) translateY(100px); }
         }
-        .animate-grid-forward { animation: grid-forward 2s linear infinite; }
+        .animate-grid-floor { animation: grid-floor 1.5s linear infinite; will-change: transform; }
+
+        @keyframes grid-ceiling {
+            0% { transform: rotateX(-60deg) translateY(0); }
+            100% { transform: rotateX(-60deg) translateY(-100px); }
+        }
+        .animate-grid-ceiling { animation: grid-ceiling 1.5s linear infinite; will-change: transform; }
       `}</style>
     </section>
   );
